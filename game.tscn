@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://elst0xn32iil"]
+[gd_scene load_steps=9 format=4 uid="uid://elst0xn32iil"]
 
 [ext_resource type="PackedScene" uid="uid://bffs0yqr2jdrx" path="res://level.tscn" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://character.tscn" id="2_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://ia3ply1cgbk8" path="res://box.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://yt3m5yxorgjn" path="res://push_box.tscn" id="4_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://dfp4afsmbm24f" path="res://Box.png" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://xuleb62wx2oh" path="res://test_gridsize.gd" id="6_ryrav"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ryrav"]
+texture = ExtResource("5_7jktm")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_eow3j"]
+tile_size = Vector2i(50, 50)
+sources/0 = SubResource("TileSetAtlasSource_ryrav")
 
 [node name="Game" type="Node2D"]
 
@@ -19,4 +30,14 @@ position = Vector2(-220, 1)
 position = Vector2(-220, -55)
 
 [node name="push_box 1" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(767, 306)
+position = Vector2(723, 343)
+metadata/TileMap = NodePath("../TileMap/TileMapLayer")
+
+[node name="TileMap" type="Node2D" parent="."]
+position = Vector2(588, 389)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
+position = Vector2(0, -10)
+tile_map_data = PackedByteArray("AAD9/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_eow3j")
+script = ExtResource("6_ryrav")

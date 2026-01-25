@@ -6,9 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eosmo"]
 size = Vector2(473, 418)
 
-[node name="Node2D" type="CharacterBody2D"]
-scale = Vector2(0.2, 0.2)
+[node name="PushBox" type="CharacterBody2D"]
+scale = Vector2(0.105, 0.12)
 script = ExtResource("1_eosmo")
+metadata/TileMap = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_wjxrl")

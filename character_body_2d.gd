@@ -10,7 +10,7 @@ var push_target = null
 
 @onready var ray = $RayCast2D
 
-signal player_pushed
+signal player_pushed(dir)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 	
 	change_push_target(ray.get_collider())
 	if Input.is_action_just_pressed("ui_push"):
-		player_pushed.emit()
+		player_pushed.emit(direction)
 	
 	move_and_slide()
 	
