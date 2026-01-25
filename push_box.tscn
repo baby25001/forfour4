@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://yt3m5yxorgjn"]
+
+[ext_resource type="Script" uid="uid://c5l0e55dqwrpq" path="res://push_box.gd" id="1_eosmo"]
+[ext_resource type="Texture2D" uid="uid://dfp4afsmbm24f" path="res://Box.png" id="1_wjxrl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eosmo"]
+size = Vector2(473, 418)
+
+[node name="Node2D" type="CharacterBody2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_eosmo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wjxrl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_eosmo")
