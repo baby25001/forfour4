@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://elst0xn32iil"]
+[gd_scene load_steps=8 format=4 uid="uid://elst0xn32iil"]
 
 [ext_resource type="PackedScene" uid="uid://bffs0yqr2jdrx" path="res://level.tscn" id="1_feb5d"]
 [ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://character.tscn" id="2_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://ia3ply1cgbk8" path="res://box.tscn" id="3_7jktm"]
 [ext_resource type="PackedScene" uid="uid://yt3m5yxorgjn" path="res://push_box.tscn" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://dfp4afsmbm24f" path="res://Box.png" id="5_7jktm"]
 [ext_resource type="Script" uid="uid://xuleb62wx2oh" path="res://test_gridsize.gd" id="6_ryrav"]
@@ -23,14 +22,8 @@ sources/0 = SubResource("TileSetAtlasSource_ryrav")
 [node name="Character" parent="." instance=ExtResource("2_fc0e3")]
 position = Vector2(632, 355)
 
-[node name="Box" parent="." instance=ExtResource("3_7jktm")]
-position = Vector2(-220, 1)
-
-[node name="Box2" parent="." instance=ExtResource("3_7jktm")]
-position = Vector2(-220, -55)
-
 [node name="push_box 1" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(723, 343)
+position = Vector2(694, 349.00003)
 metadata/TileMap = NodePath("../TileMap/TileMapLayer")
 
 [node name="TileMap" type="Node2D" parent="."]
