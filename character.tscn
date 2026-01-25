@@ -4,9 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_wa5vi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
-size = Vector2(128, 128)
+size = Vector2(127, 127)
 
 [node name="Character" type="CharacterBody2D"]
+floor_snap_length = 0.0
+safe_margin = 0.001
 script = ExtResource("1_pjt0s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
