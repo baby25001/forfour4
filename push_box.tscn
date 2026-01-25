@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://yt3m5yxorgjn"]
+[gd_scene load_steps=6 format=3 uid="uid://yt3m5yxorgjn"]
 
 [ext_resource type="Script" uid="uid://c5l0e55dqwrpq" path="res://push_box.gd" id="1_eosmo"]
 [ext_resource type="Texture2D" uid="uid://bobbwnootjvd" path="res://Literally a 200x200 pixel box.png" id="2_eosmo"]
@@ -8,6 +8,9 @@ size = Vector2(200, 180)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lajmy"]
 size = Vector2(185, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1sdc"]
+size = Vector2(10, 180)
 
 [node name="PushBox" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
@@ -26,3 +29,7 @@ shape = SubResource("RectangleShape2D_eosmo")
 [node name="FloorDetector" type="ShapeCast2D" parent="."]
 shape = SubResource("RectangleShape2D_lajmy")
 target_position = Vector2(0, 100)
+
+[node name="WallDetector" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_x1sdc")
+target_position = Vector2(100, 0)

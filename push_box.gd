@@ -33,7 +33,8 @@ func _physics_process(delta):
 		push_speed = push_length/step * TOP_SPEED
 		if push_speed < MIN_SPEED: push_speed = MIN_SPEED
 		#velocity.x = push_speed
-		position.x = move_toward(position.x, target_x, push_speed * delta)
+		move_x_pos(move_toward(position.x, target_x, push_speed * delta))
+		#position.x = move_toward(position.x, target_x, push_speed * delta)
 		push_length -= push_speed * delta
 		if push_length < 0.2* step: is_pushed = false;
 	else:
@@ -61,5 +62,12 @@ func _on_block_push(direction):
 	is_pushed = true
 
 func move_x_pos(next):
+	print("called")
 	var start = position.x
 	var direction = (next-start)/abs(next-start)
+	$WallDetector.target_position.x = abs($WallDetector.target_position.x) * direction
+	
+	if $WallDetector.get_collision_count() != 0:
+		global_position.x = snap_to_grid().x
+		return
+	position.x = next
