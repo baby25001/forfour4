@@ -15,7 +15,6 @@ func _process(_delta: float) -> void:
 		down = false
 		level_finished.emit()
 	
-
 func _on_left_body_entered(body: Node2D) -> void:
 	var target = body.get_name()
 	if target == "TargetBox":
