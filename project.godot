@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="New Game Project"
-run/main_scene="uid://elst0xn32iil"
+run/main_scene="uid://xg0d8kjqnsr0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1098
+window/size/viewport_height=732
 
 [input]
 

@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cwhm6ball0yq2"]
+
+[ext_resource type="Script" uid="uid://bmo2skjw1qky" path="res://level_two.gd" id="1_3k6fr"]
+[ext_resource type="PackedScene" uid="uid://18lrl7t7u5wv" path="res://two.tscn" id="2_ca72b"]
+[ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://character.tscn" id="3_qv4wy"]
+[ext_resource type="PackedScene" path="res://target_box.tscn" id="5_ook2w"]
+[ext_resource type="PackedScene" uid="uid://yt3m5yxorgjn" path="res://push_box.tscn" id="6_3k6fr"]
+[ext_resource type="PackedScene" path="res://target_zone.tscn" id="6_q0uq4"]
+
+[node name="LevelTwo" type="Node2D"]
+script = ExtResource("1_3k6fr")
+
+[node name="TileMap" parent="." instance=ExtResource("2_ca72b")]
+
+[node name="Character" parent="." instance=ExtResource("3_qv4wy")]
+position = Vector2(305, 183)
+
+[node name="TargetBox" parent="." instance=ExtResource("5_ook2w")]
+position = Vector2(-487, 141)
+
+[node name="TargetZone" parent="." instance=ExtResource("6_q0uq4")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-732, 0)
+
+[node name="PushBox" parent="." instance=ExtResource("6_3k6fr")]
+position = Vector2(531, 427)
+scale = Vector2(1, 1)
+
+[node name="PushBox2" parent="." instance=ExtResource("6_3k6fr")]
+position = Vector2(287, 184)
+scale = Vector2(1, 1)
+
+[connection signal="level_finished" from="TargetZone" to="." method="_level_finished"]

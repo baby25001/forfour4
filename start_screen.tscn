@@ -1,0 +1,36 @@
+[gd_scene load_steps=2 format=3 uid="uid://xg0d8kjqnsr0"]
+
+[ext_resource type="Script" uid="uid://b1nnjcnmhayrm" path="res://start_screen.gd" id="1_ncxyx"]
+
+[node name="StartScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ncxyx")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1098.0
+offset_bottom = 732.0
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 309.0
+offset_right = 661.0
+offset_bottom = 371.0
+text = "Start"
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 0
+offset_left = 471.0
+offset_top = 473.0
+offset_right = 660.0
+offset_bottom = 535.0
+text = "Quit"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

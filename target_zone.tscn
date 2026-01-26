@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3275k1duttty"]
+
+[ext_resource type="Script" uid="uid://dqfqxs61ng7d4" path="res://target_zone.gd" id="1_8pjxi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8pjxi"]
+size = Vector2(0.5, 120)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8sxar"]
+size = Vector2(120, 0.5)
+
+[node name="TargetZone" type="Node2D"]
+script = ExtResource("1_8pjxi")
+
+[node name="Left" type="Area2D" parent="."]
+
+[node name="LeftCollision" type="CollisionShape2D" parent="Left"]
+position = Vector2(854.75, 427)
+shape = SubResource("RectangleShape2D_8pjxi")
+
+[node name="Right" type="Area2D" parent="."]
+
+[node name="RightCollision" type="CollisionShape2D" parent="Right"]
+position = Vector2(975, 427)
+shape = SubResource("RectangleShape2D_8pjxi")
+
+[node name="Up" type="Area2D" parent="."]
+
+[node name="UpCollision" type="CollisionShape2D" parent="Up"]
+position = Vector2(914.5, 367.5)
+shape = SubResource("RectangleShape2D_8sxar")
+
+[node name="Down" type="Area2D" parent="."]
+
+[node name="DownCollision" type="CollisionShape2D" parent="Down"]
+position = Vector2(915, 487.25)
+shape = SubResource("RectangleShape2D_8sxar")
+
+[connection signal="body_entered" from="Left" to="." method="_on_left_body_entered"]
+[connection signal="body_entered" from="Right" to="." method="_on_right_body_entered"]
+[connection signal="body_entered" from="Up" to="." method="_on_up_body_entered"]
+[connection signal="body_entered" from="Down" to="." method="_on_down_body_entered"]

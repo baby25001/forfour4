@@ -11,7 +11,8 @@ var push_direction: int = 0
 var push_length: float = 0 
 
 func _enter_tree() -> void:
-	tile_map = get_node(get_meta("TileMap"))
+	#tile_map = get_node(get_meta("TileMap"))
+	tile_map = get_node("../TileMap/Background")
 	if tile_map != null:
 		global_position = snap_to_grid()
 		step = tile_map.map_to_local(Vector2(1,0)).x - tile_map.map_to_local(Vector2(0,0)).x

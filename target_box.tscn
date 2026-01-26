@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cw2nnmtuy0yrn"]
+
+[ext_resource type="Texture2D" uid="uid://ocmgnf3ho6ih" path="res://TargetBox.png" id="2_krfnx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oq5cr"]
+size = Vector2(120, 120)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oq5cr"]
+b = Vector2(0, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqn3j"]
+size = Vector2(20, 55)
+
+[node name="TargetBox" type="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(792, 286)
+shape = SubResource("RectangleShape2D_oq5cr")
+
+[node name="SurfaceDetector" type="ShapeCast2D" parent="."]
+position = Vector2(751, 316)
+shape = SubResource("SegmentShape2D_oq5cr")
+target_position = Vector2(63, 0)
+
+[node name="SideDetector" type="ShapeCast2D" parent="."]
+position = Vector2(760, 286)
+shape = SubResource("RectangleShape2D_bqn3j")
+target_position = Vector2(46, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(792, 286)
+texture = ExtResource("2_krfnx")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://yt3m5yxorgjn"]
 
 [ext_resource type="Script" uid="uid://c5l0e55dqwrpq" path="res://push_box.gd" id="1_eosmo"]
-[ext_resource type="Texture2D" uid="uid://bobbwnootjvd" path="res://Literally a 200x200 pixel box.png" id="2_eosmo"]
+[ext_resource type="Texture2D" uid="uid://dfp4afsmbm24f" path="res://Box.png" id="3_lajmy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eosmo"]
 size = Vector2(200, 180)
@@ -19,17 +19,23 @@ safe_margin = 0.001
 script = ExtResource("1_eosmo")
 metadata/TileMap = NodePath("")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_eosmo")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -10)
+position = Vector2(140, -10)
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_eosmo")
 
 [node name="FloorDetector" type="ShapeCast2D" parent="."]
+position = Vector2(140, 0)
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_lajmy")
 target_position = Vector2(0, 100)
 
 [node name="WallDetector" type="ShapeCast2D" parent="."]
+position = Vector2(140, 0)
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_x1sdc")
 target_position = Vector2(100, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(140, 0)
+texture = ExtResource("3_lajmy")
