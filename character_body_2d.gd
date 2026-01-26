@@ -11,6 +11,7 @@ var push_target = null
 @onready var ray = $RayCast2D
 
 signal player_pushed(dir)
+signal upwards_collision(motion: Vector2)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -51,6 +52,13 @@ func _physics_process(delta: float) -> void:
 	#        collision.get_collider().apply_central_impulse(push_right)
 
 func move(motion: Vector2):
+	var direction_vector = Vector2((motion.x/abs(motion.x)),(motion.y/abs(motion.y)))
+	if motion.x == 0:
+		direction_vector.x = 0
+	if motion.y == 0:
+		direction_vector.y = 0
+		snap_to_floor()
+	
 	#print(motion, "MOTION")
 	var x_test = move_and_collide(Vector2(motion.x, 0), true)
 	if x_test == null:
@@ -66,9 +74,16 @@ func move(motion: Vector2):
 	if y_test == null:
 		move_and_collide(Vector2(0, motion.y))
 	else:
-		if y_test.get_normal() == Vector2(0, -1):
-			velocity.y = 0
-		move_and_collide(y_test.get_remainder())
+		move_and_collide(Vector2(0, motion.y))
+		if y_test.get_collider() is CharacterBody2D and direction_vector.y == -1:
+			if y_test.get_collider().has_method("_on_under_moved"):
+				var fail_code = y_test.get_collider()._on_under_moved(self, motion, true)
+				if fail_code == 0:
+					return
+		elif y_test.get_normal().y != 0:
+			snap_to_floor()
+		velocity.y = 0
+		
 
 func change_push_target(collider: Object) -> void: # changes push target
 	
@@ -88,3 +103,26 @@ func change_push_target(collider: Object) -> void: # changes push target
 	if collider.has_method("_on_block_push"):
 		push_target = collider
 		player_pushed.connect(push_target._on_block_push)
+
+func snap_to_floor():
+	$FloorDetector.force_shapecast_update()
+	var count = $FloorDetector.get_collision_count() 
+	
+	if  count == 0:
+		return
+	
+	var furthest_distance: float = -10
+	for n in count:
+		var collision = $FloorDetector.get_collision_point(n)
+		var delta = collision.y - global_position.y
+		#print(position, "position", collision, "collision  ", delta)
+		if delta < 0:
+			continue
+		if delta > furthest_distance:
+			furthest_distance = delta
+	
+	if furthest_distance < 0: return
+	
+	var floor_distance = $BottomIndicator.global_position.y - global_position.y
+	var snap =  furthest_distance - floor_distance
+	global_position.y += snap

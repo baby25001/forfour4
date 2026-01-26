@@ -82,18 +82,17 @@ func move(motion: Vector2):
 		#print("yeah stop em!")
 	
 	
-	var y_test = move_and_collide(Vector2(0, motion.y), true)
+	var y_test = move_and_collide(Vector2(0, motion.y))
 	if y_test == null:
-		move_and_collide(Vector2(0, motion.y))
+		pass
 	else:
-		move_and_collide(y_test.get_remainder())
-		#for i in 2:
-		#	var y2_test = move_and_collide(Vector2(0, (1.0/(1.0+i) * motion.y)), true)
-		#	if y2_test == null:
-		#		move_and_collide(Vector2(0, (1.0/(1.0+i) * motion.y)))
-		#	else:
-		#		move_and_collide(y2_test.get_remainder())
-		snap_to_floor()
+		if y_test.get_collider() is CharacterBody2D and direction_vector.y == -1:
+			if y_test.get_collider().has_method("_on_under_moved"):
+				var fail_code = y_test.get_collider()._on_under_moved(self, motion, true)
+				if fail_code == 0:
+					return
+		elif y_test.get_normal().y != 0:
+			snap_to_floor()
 		velocity.y = 0
 
 func snap_to_floor():
@@ -117,7 +116,23 @@ func snap_to_floor():
 	
 	var floor_distance = $BottomIndicator.global_position.y - global_position.y
 	var snap =  furthest_distance - floor_distance
-	global_position.y += snap
+	move_and_collide(Vector2(0, snap))
+
+func _on_under_moved(under: Node, motion: Vector2, ignore_x = false):
+	var error_code = 0
+	var test = move_and_collide(motion, true)
+	if test:
+		error_code = 1
+		if test.get_collider().has_method("_on_under_moved"):
+			error_code = 0
+	
+	if ignore_x:
+		velocity.y = motion.y/under.get_physics_process_delta_time()
+		move(motion)
+	else:
+		velocity.y = motion.y/under.get_physics_process_delta_time()
+		move(motion)
+	return error_code
 
 func debug_x(collision_normal: Vector2):
 	$X_Indicator.position = collision_normal * 20

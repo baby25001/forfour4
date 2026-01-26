@@ -7,7 +7,7 @@
 size = Vector2(128, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pjt0s"]
-size = Vector2(128, 5)
+size = Vector2(128, 20)
 
 [node name="Character" type="CharacterBody2D"]
 scale = Vector2(0.36, 0.36)
@@ -26,3 +26,6 @@ target_position = Vector2(100, 0)
 [node name="FloorDetector" type="ShapeCast2D" parent="."]
 shape = SubResource("RectangleShape2D_pjt0s")
 target_position = Vector2(0, 64)
+
+[node name="BottomIndicator" type="Node2D" parent="."]
+position = Vector2(0, 64)

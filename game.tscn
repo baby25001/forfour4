@@ -27,7 +27,7 @@ script = ExtResource("1_ryrav")
 position = Vector2(352, 350)
 
 [node name="push_box 1" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(457, 287)
+position = Vector2(356, -53)
 metadata/TileMap = NodePath("../TileMap/TileMapLayer")
 
 [node name="Label" type="Label" parent="push_box 1"]
@@ -43,12 +43,12 @@ position = Vector2(588, 389)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
 position = Vector2(0, -10)
-tile_map_data = PackedByteArray("AAD9/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAD7//z/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_eow3j")
 script = ExtResource("6_ryrav")
 
 [node name="PushBox" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(430, 180)
+position = Vector2(350, 239)
 metadata/TileMap = NodePath("../TileMap/TileMapLayer")
 
 [node name="Label" type="Label" parent="PushBox"]
@@ -60,7 +60,7 @@ text = "PushBox"
 metadata/_edit_use_anchors_ = true
 
 [node name="PushBox2" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(358, 145)
+position = Vector2(349, 297)
 metadata/TileMap = NodePath("../TileMap/TileMapLayer")
 
 [node name="Label" type="Label" parent="PushBox2"]
