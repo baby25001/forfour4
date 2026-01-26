@@ -5,10 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://bc4r71ufwg6jh" path="res://Literally a 200x200 pixel box.png" id="2_eosmo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eosmo"]
-size = Vector2(198, 200)
+size = Vector2(198, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lajmy"]
-size = Vector2(195, 5)
+size = Vector2(195, 20)
 
 [node name="PushBox" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
@@ -19,7 +19,7 @@ metadata/TileMap = NodePath("")
 texture = ExtResource("2_eosmo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -1)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_eosmo")
 
 [node name="FloorDetector" type="ShapeCast2D" parent="."]
@@ -29,3 +29,6 @@ target_position = Vector2(0, 100)
 [node name="X_Indicator" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_wjxrl")
+
+[node name="BottomIndicator" type="Node2D" parent="."]
+position = Vector2(0, 100)

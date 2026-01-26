@@ -23,8 +23,6 @@ func _enter_tree() -> void:
 func _physics_process(delta):
 	if $FloorDetector.get_collision_count() == 0:
 		velocity += get_gravity() * delta
-	else:
-		velocity.y = 0
 	
 	if push_length > 0:
 		#print("OKAY")
@@ -62,44 +60,64 @@ func _on_block_push(direction):
 
 func move(motion: Vector2):
 	#print(motion, "MOTION")
-	var x_portion = move_and_collide(Vector2(motion.x, 0))
-	if x_portion:
-		if x_portion.get_normal().x == 0:
-			position.x += motion.x
-		if motion.x > 0:
-			modulate.g = 0.5
-		modulate.r = 1
-		if motion.y == 0:
-			global_position.y = snap_to_grid().y
-		debug_x(x_portion.get_normal())
-	else:
-		modulate.g = 1
-		modulate.r = 0
-		debug_x(Vector2(0,0))
+	var direction_vector = Vector2((motion.x/abs(motion.x)),(motion.y/abs(motion.y)))
 	if motion.x == 0:
 		global_position.x = snap_to_grid().x
+		direction_vector.x = 0
+	if motion.y == 0:
+		snap_to_floor()
+		direction_vector.y = 0
+	
+	var x_test = move_and_collide(Vector2(motion.x, 0), true)
+	if x_test == null:
+		move_and_collide(Vector2(motion.x, 0))
+		debug_x(Vector2(0,0))
+		modulate.r = 0
+	elif test_move(transform, Vector2(step * direction_vector.x, 0)):
+		#print("collision happened?")
+		modulate.r = 1
+		move_and_collide(x_test.get_remainder())
+		debug_x(x_test.get_normal())
+#	else:
+		#print("yeah stop em!")
 	
 	
-	var y_portion = move_and_collide(Vector2(0, motion.y))
-	if y_portion:
-		var remain = y_portion.get_travel()
-		print(remain)
-		move_and_collide(remain)
-		if y_portion.get_normal().y != 0:
-			var collider = y_portion.get_collider()
-			var colpos_transposed = to_local(collider.global_position) 
-			var height_diff = abs(colpos_transposed.y - position.y)
-			if height_diff < step:
-				position.y = colpos_transposed.y + step
-	#var ignore_y = false
-	#var ignore_x = false
-	#if global_position.x == snap_to_grid().x:
-	#	ignore_x = true
-	#if global_position.y == snap_to_grid().y:
-	#	ignore_y = true
-	#var test = move_and_collide(motion, true)
-	#if test != null:
-	#	print(test.get_normal())
+	var y_test = move_and_collide(Vector2(0, motion.y), true)
+	if y_test == null:
+		move_and_collide(Vector2(0, motion.y))
+	else:
+		move_and_collide(y_test.get_remainder())
+		#for i in 2:
+		#	var y2_test = move_and_collide(Vector2(0, (1.0/(1.0+i) * motion.y)), true)
+		#	if y2_test == null:
+		#		move_and_collide(Vector2(0, (1.0/(1.0+i) * motion.y)))
+		#	else:
+		#		move_and_collide(y2_test.get_remainder())
+		snap_to_floor()
+		velocity.y = 0
+
+func snap_to_floor():
+	$FloorDetector.force_shapecast_update()
+	var count = $FloorDetector.get_collision_count() 
+	
+	if  count == 0:
+		return
+	
+	var furthest_distance: float = -10
+	for n in count:
+		var collision = $FloorDetector.get_collision_point(n)
+		var delta = collision.y - global_position.y
+		#print(position, "position", collision, "collision  ", delta)
+		if delta < 0:
+			continue
+		if delta > furthest_distance:
+			furthest_distance = delta
+	
+	if furthest_distance < 0: return
+	
+	var floor_distance = $BottomIndicator.global_position.y - global_position.y
+	var snap =  furthest_distance - floor_distance
+	global_position.y += snap
 
 func debug_x(collision_normal: Vector2):
 	$X_Indicator.position = collision_normal * 20

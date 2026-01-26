@@ -52,15 +52,23 @@ func _physics_process(delta: float) -> void:
 
 func move(motion: Vector2):
 	#print(motion, "MOTION")
-	var x_portion = move_and_collide(Vector2(motion.x, 0))
-	if not x_portion:
-		pass
-	var y_portion = move_and_collide(Vector2(0, motion.y))
-	if y_portion:
-		if y_portion.get_normal() == Vector2(0, 1):
+	var x_test = move_and_collide(Vector2(motion.x, 0), true)
+	if x_test == null:
+		move_and_collide(Vector2(motion.x, 0))
+	else:
+		#position.y -= 0.08
+		#if test_move(self.transform, Vector2(motion.x, 0)):
+		#	move_and_collide(Vector2(motion.x, 0))
+		#else:
+		#	position.y += 0.08
+			move_and_collide(x_test.get_remainder())
+	var y_test = move_and_collide(Vector2(0, motion.y), true)
+	if y_test == null:
+		move_and_collide(Vector2(0, motion.y))
+	else:
+		if y_test.get_normal() == Vector2(0, -1):
 			velocity.y = 0
-		var remain = y_portion.get_travel()
-		move_and_collide(remain)
+		move_and_collide(y_test.get_remainder())
 
 func change_push_target(collider: Object) -> void: # changes push target
 	
