@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-const RAY_LENGTH = 40
+const RAY_LENGTH = 100
 var push_left = Vector2(-300, 0)
 var push_right = Vector2(300, 0)
 var push_target = null
@@ -14,11 +14,11 @@ signal player_pushed(dir)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
-	if not is_on_floor():
+	if $FloorDetector.get_collision_count() == 0:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and $FloorDetector.get_collision_count() != 0:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_push"):
 		player_pushed.emit(direction)
 	
-	move_and_slide()
+	move(velocity * delta)
 	
 	#for collide in get_slide_collision_count():
 	#    var collision = get_slide_collision((collide))
@@ -49,7 +49,19 @@ func _physics_process(delta: float) -> void:
 	#        and Input.is_action_just_pressed("ui_push") and Input.is_action_pressed("ui_right")
 	#    ) :
 	#        collision.get_collider().apply_central_impulse(push_right)
-	
+
+func move(motion: Vector2):
+	#print(motion, "MOTION")
+	var x_portion = move_and_collide(Vector2(motion.x, 0))
+	if not x_portion:
+		pass
+	var y_portion = move_and_collide(Vector2(0, motion.y))
+	if y_portion:
+		if y_portion.get_normal() == Vector2(0, 1):
+			velocity.y = 0
+		var remain = y_portion.get_travel()
+		move_and_collide(remain)
+
 func change_push_target(collider: Object) -> void: # changes push target
 	
 	if collider == push_target:

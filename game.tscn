@@ -10,9 +10,11 @@
 texture = ExtResource("5_7jktm")
 texture_region_size = Vector2i(50, 50)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25, -25, 25, -25, 25, 25, -25, 25)
 
 [sub_resource type="TileSet" id="TileSet_eow3j"]
 tile_size = Vector2i(50, 50)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ryrav")
 
 [node name="Game" type="Node2D"]
@@ -20,10 +22,10 @@ sources/0 = SubResource("TileSetAtlasSource_ryrav")
 [node name="Level" parent="." instance=ExtResource("1_feb5d")]
 
 [node name="Character" parent="." instance=ExtResource("2_fc0e3")]
-position = Vector2(632, 355)
+position = Vector2(364, 339)
 
 [node name="push_box 1" parent="." instance=ExtResource("4_fc0e3")]
-position = Vector2(694, 349.00003)
+position = Vector2(425, 232)
 metadata/TileMap = NodePath("../TileMap/TileMapLayer")
 
 [node name="TileMap" type="Node2D" parent="."]
@@ -31,6 +33,14 @@ position = Vector2(588, 389)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="TileMap"]
 position = Vector2(0, -10)
-tile_map_data = PackedByteArray("AAD9/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD9/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_eow3j")
 script = ExtResource("6_ryrav")
+
+[node name="PushBox" parent="." instance=ExtResource("4_fc0e3")]
+position = Vector2(427, 124)
+metadata/TileMap = NodePath("../TileMap/TileMapLayer")
+
+[node name="PushBox2" parent="." instance=ExtResource("4_fc0e3")]
+position = Vector2(426, 183)
+metadata/TileMap = NodePath("../TileMap/TileMapLayer")
