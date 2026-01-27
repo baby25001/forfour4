@@ -76,11 +76,13 @@ func move(motion: Vector2):
 		move_and_collide(Vector2(motion.x, 0))
 		debug_x(Vector2(0,0))
 		modulate.r = 0
-	elif test_move(transform, Vector2(step * direction_vector.x, 0)):
+	else:
 		#print("collision happened?")
 		modulate.r = 1
 		move_and_collide(x_test.get_remainder())
 		debug_x(x_test.get_normal())
+		if x_test.get_normal().y != 0:
+			print(self, x_test.get_collider())
 #	else:
 		#print("yeah stop em!")
 	
