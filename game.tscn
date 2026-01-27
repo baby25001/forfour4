@@ -1,11 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://elst0xn32iil"]
+[gd_scene load_steps=7 format=4 uid="uid://elst0xn32iil"]
 
 [ext_resource type="PackedScene" uid="uid://bffs0yqr2jdrx" path="res://level.tscn" id="1_feb5d"]
-[ext_resource type="Script" uid="uid://b3xn0sjavjddk" path="res://debug_game.gd" id="1_ryrav"]
-[ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://character.tscn" id="2_fc0e3"]
-[ext_resource type="PackedScene" uid="uid://yt3m5yxorgjn" path="res://push_box.tscn" id="4_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://new_character.tscn" id="2_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://yt3m5yxorgjn" path="res://new_push_box.tscn" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://dfp4afsmbm24f" path="res://Box.png" id="5_7jktm"]
-[ext_resource type="Script" uid="uid://xuleb62wx2oh" path="res://test_gridsize.gd" id="6_ryrav"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ryrav"]
 texture = ExtResource("5_7jktm")
@@ -19,7 +17,6 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ryrav")
 
 [node name="Game" type="Node2D"]
-script = ExtResource("1_ryrav")
 
 [node name="Level" parent="." instance=ExtResource("1_feb5d")]
 
@@ -45,7 +42,6 @@ position = Vector2(588, 389)
 position = Vector2(0, -10)
 tile_map_data = PackedByteArray("AAD9/wIAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAIAAAAAAAAAAAACAAMAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAGAAMAAAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAD+//7/AAAAAAAAAAD9//3/AAAAAAAAAAD+//z/AAAAAAAAAAD9//v/AAAAAAAAAAD+//r/AAAAAAAAAAD9//n/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_eow3j")
-script = ExtResource("6_ryrav")
 
 [node name="PushBox" parent="." instance=ExtResource("4_fc0e3")]
 position = Vector2(347, 282)

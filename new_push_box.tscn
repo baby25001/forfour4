@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://yt3m5yxorgjn"]
 
-[ext_resource type="Script" uid="uid://c5l0e55dqwrpq" path="res://push_box.gd" id="1_eosmo"]
+[ext_resource type="Script" uid="uid://c5l0e55dqwrpq" path="res://new_push_box.gd" id="1_eosmo"]
 [ext_resource type="Texture2D" uid="uid://dfp4afsmbm24f" path="res://Box.png" id="1_wjxrl"]
 [ext_resource type="Texture2D" uid="uid://bc4r71ufwg6jh" path="res://Literally a 200x200 pixel box.png" id="2_eosmo"]
 
