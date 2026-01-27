@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://yt3m5yxorgjn"]
+[gd_scene load_steps=7 format=3 uid="uid://yt3m5yxorgjn"]
 
 [ext_resource type="Script" uid="uid://c5l0e55dqwrpq" path="res://push_box.gd" id="1_eosmo"]
 [ext_resource type="Texture2D" uid="uid://dfp4afsmbm24f" path="res://Box.png" id="1_wjxrl"]
@@ -9,6 +9,9 @@ size = Vector2(198, 190)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lajmy"]
 size = Vector2(195, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1sdc"]
+size = Vector2(185, 20)
 
 [node name="PushBox" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
@@ -24,7 +27,7 @@ shape = SubResource("RectangleShape2D_eosmo")
 
 [node name="FloorDetector" type="ShapeCast2D" parent="."]
 shape = SubResource("RectangleShape2D_lajmy")
-target_position = Vector2(0, 100)
+target_position = Vector2(0, 92)
 
 [node name="X_Indicator" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -32,3 +35,7 @@ texture = ExtResource("1_wjxrl")
 
 [node name="BottomIndicator" type="Node2D" parent="."]
 position = Vector2(0, 100)
+
+[node name="BoxDetector" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_x1sdc")
+target_position = Vector2(0, -130)

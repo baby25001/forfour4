@@ -48,6 +48,9 @@ func snap_to_grid(grid = tile_map):
 
 func _on_block_push(direction):
 	if moving: return
+	if get_top_box():
+		get_top_box()._on_block_push(direction)
+	
 	#print("block_pushed")
 	#if direction > 0:
 	#	print("push right")
@@ -117,6 +120,15 @@ func snap_to_floor():
 	var floor_distance = $BottomIndicator.global_position.y - global_position.y
 	var snap =  furthest_distance - floor_distance
 	move_and_collide(Vector2(0, snap))
+
+func get_top_box():
+	var count = $BoxDetector.get_collision_count()
+	
+	for n in count:
+		var collider = $BoxDetector.get_collider(n)
+		if collider is CharacterBody2D and collider.has_method("_on_block_push"):
+			return collider
+	return null
 
 func _on_under_moved(under: Node, motion: Vector2, ignore_x = false):
 	var error_code = 0
