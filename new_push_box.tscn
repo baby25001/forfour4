@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp2548xx1mi1f"]
+
+[ext_resource type="Script" uid="uid://dtkcsfep85rs6" path="res://new_push_box.gd" id="1_sjj5x"]
+[ext_resource type="Texture2D" uid="uid://dfp4afsmbm24f" path="res://Box.png" id="1_wjxrl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eosmo"]
+size = Vector2(198, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lajmy"]
+size = Vector2(195, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1sdc"]
+size = Vector2(185, 20)
+
+[node name="PushBox" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_sjj5x")
+metadata/TileMap = NodePath("")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.667, 1.667)
+texture = ExtResource("1_wjxrl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("RectangleShape2D_eosmo")
+
+[node name="FloorDetector" type="ShapeCast2D" parent="."]
+position = Vector2(0, 90)
+shape = SubResource("RectangleShape2D_lajmy")
+target_position = Vector2(0, 10)
+
+[node name="X_Indicator" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_wjxrl")
+
+[node name="BottomIndicator" type="Node2D" parent="."]
+position = Vector2(0, 100)
+
+[node name="BoxDetector" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_x1sdc")
+target_position = Vector2(0, -130)
