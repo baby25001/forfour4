@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://oea2uyph2jxn"]
 
-[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://new_movement.gd" id="1_c2tta"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_xfryq"]
+[ext_resource type="Script" uid="uid://bss4mgihbqfdc" path="res://character_body_2d.gd" id="1_pjt0s"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_wa5vi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
 size = Vector2(128, 128)
@@ -12,10 +12,10 @@ size = Vector2(128, 20)
 [node name="Character" type="CharacterBody2D"]
 scale = Vector2(0.36, 0.36)
 floor_snap_length = 21.5
-script = ExtResource("1_c2tta")
+script = ExtResource("1_pjt0s")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_xfryq")
+texture = ExtResource("2_wa5vi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wfnr8")
