@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const TOP_SPEED = 240
-const MIN_SPEED = 80
+const TOP_SPEED = 500
+const MIN_SPEED = 100
 var push_speed : float
 var step = 20;
 var target_x: float = position.x
@@ -19,7 +19,7 @@ func _enter_tree() -> void:
 	print(step)
 	target_x = position.x
 
-
+var prev_floor;
 func _physics_process(delta):
 	if $FloorDetector.get_collision_count() == 0:
 		velocity += get_gravity() * delta
@@ -94,11 +94,11 @@ func move(motion: Vector2):
 		if y_test.get_collider() is CharacterBody2D and direction_vector.y == -1:
 			if y_test.get_collider().has_method("_on_under_moved"):
 				var fail_code = y_test.get_collider()._on_under_moved(self, motion, true)
-				if fail_code == 0:
-					return
+				if fail_code == 1:
+					velocity.y = 0
 		elif y_test.get_normal().y != 0:
 			snap_to_floor()
-		velocity.y = 0
+			velocity.y = 0
 
 func snap_to_floor():
 	$FloorDetector.force_shapecast_update()
@@ -108,6 +108,7 @@ func snap_to_floor():
 		return
 	
 	var furthest_distance: float = -10
+	
 	for n in count:
 		var collision = $FloorDetector.get_collision_point(n)
 		var delta = collision.y - global_position.y
@@ -116,6 +117,7 @@ func snap_to_floor():
 			continue
 		if delta > furthest_distance:
 			furthest_distance = delta
+	
 	
 	if furthest_distance < 0: return
 	

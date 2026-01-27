@@ -2,11 +2,17 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -450.0
 const RAY_LENGTH = 100
+const BUFFER_WINDOW = 0.3
+
+var grav_mod = 1.0
 var push_left = Vector2(-300, 0)
 var push_right = Vector2(300, 0)
 var push_target = null
+
+#Buffer system
+
 
 @onready var ray = $RayCast2D
 
@@ -16,12 +22,19 @@ signal upwards_collision(motion: Vector2)
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if $FloorDetector.get_collision_count() == 0:
-		velocity += get_gravity() * delta
+		velocity += get_gravity() * grav_mod * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and $FloorDetector.get_collision_count() != 0:
 		velocity.y = JUMP_VELOCITY
-
+	elif Input.is_action_pressed("ui_accept") and velocity.y < 200:
+		grav_mod = 0.8
+	else:
+		grav_mod = 1
+	
+	if Input.is_action_just_released("ui_accept") and velocity.y <0:
+		velocity.y = 0
+	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -85,10 +98,10 @@ func move(motion: Vector2):
 		velocity.y = 0
 		
 
-func change_push_target(collider: Object) -> void: # changes push target
+func change_push_target(collider: Object) -> bool: # changes push target, returns bool if push target was changed
 	
 	if collider == push_target:
-		return
+		return false
 	
 	if push_target != null:
 		player_pushed.disconnect(push_target._on_block_push)
@@ -96,13 +109,14 @@ func change_push_target(collider: Object) -> void: # changes push target
 	
 	if collider == null:
 		print("NOT")
-		return
+		return false
 	else:
 		print("COLLIDING")
 	
 	if collider.has_method("_on_block_push"):
 		push_target = collider
 		player_pushed.connect(push_target._on_block_push)
+	return true
 
 func snap_to_floor():
 	$FloorDetector.force_shapecast_update()

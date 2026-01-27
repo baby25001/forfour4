@@ -12,21 +12,26 @@
 script = ExtResource("1_l6eyr")
 
 [node name="TileMap" parent="." instance=ExtResource("1_xsnk2")]
-scale = Vector2(0.984, 0.984)
+position = Vector2(0, -7)
 
 [node name="TargetBox" parent="." instance=ExtResource("4_0l1we")]
-position = Vector2(-12, 137)
+position = Vector2(-13, 138)
 
 [node name="TargetZone" parent="." instance=ExtResource("5_466b2")]
 modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -33)
 
 [node name="Menu" parent="." instance=ExtResource("7_c00e3")]
 
 [node name="Character" parent="." instance=ExtResource("6_c00e3")]
-position = Vector2(435.00006, 181.00002)
+position = Vector2(482, 170.00002)
 
 [node name="PushBox" parent="." instance=ExtResource("7_0l1we")]
-position = Vector2(182, 416.00003)
+position = Vector2(160, 386)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="PushBox2" parent="." instance=ExtResource("7_0l1we")]
+position = Vector2(159, 217)
 metadata/TileMap = NodePath("../TileMap")
 
 [connection signal="level_finished" from="TargetZone" to="." method="_level_finished"]
