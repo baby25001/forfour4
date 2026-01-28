@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bvq4vyqc5f8ek"]
+[gd_scene load_steps=9 format=3 uid="uid://bvq4vyqc5f8ek"]
 
 [ext_resource type="Script" uid="uid://vvjmp0m3ptt6" path="res://scripts/level_one.gd" id="1_06pq0"]
 [ext_resource type="PackedScene" uid="uid://c1b5tmmufwn7y" path="res://scenes/Levels and tilemaps/one.tscn" id="2_bttrn"]
@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://dp2548xx1mi1f" path="res://scenes/entities/push_box.tscn" id="5_0rv3x"]
 [ext_resource type="PackedScene" uid="uid://bkb4ifmxnfc0s" path="res://scenes/target_marker.tscn" id="6_ucfn2"]
 [ext_resource type="PackedScene" uid="uid://d0qt18pkwc3i1" path="res://scenes/entities/railing.tscn" id="7_bttrn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bttrn"]
+size = Vector2(244.00024, 55.00006)
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_06pq0")
@@ -20,29 +23,37 @@ offset_right = 122.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Character" parent="." instance=ExtResource("4_ju4um")]
-position = Vector2(561, 419)
+position = Vector2(69.99994, -189.99998)
 
 [node name="PushBox" parent="." instance=ExtResource("5_0rv3x")]
-position = Vector2(435, 418.00003)
+position = Vector2(-69, 44.00003)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="PushBox2" parent="." instance=ExtResource("5_0rv3x")]
-position = Vector2(428, 293)
+position = Vector2(-76, -81)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="TargetMark" parent="PushBox2" instance=ExtResource("6_ucfn2")]
 metadata/TargetPos = NodePath("../../TargetZone")
 
 [node name="TargetZone" parent="." instance=ExtResource("6_ucfn2")]
-position = Vector2(793, 420)
+position = Vector2(304, 57)
 scale = Vector2(0.10166671, 0.0991146)
 metadata/IsTarget = true
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="Railing" parent="." instance=ExtResource("7_bttrn")]
-position = Vector2(426, 321)
+position = Vector2(-295, -67)
 rotation = -1.5707964
 metadata/tile_map = NodePath("../TileMap")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Ladder"]]
+position = Vector2(426, 321)
+rotation = -1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(332.00003, -610)
+shape = SubResource("RectangleShape2D_bttrn")
 
 [connection signal="started_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_start_moving"]
 [connection signal="stopped_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_stop_moving"]

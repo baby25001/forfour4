@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED = 300.0
+const CLIMB_SPEED = 300.0
 const JUMP_VELOCITY = -450.0
 const RAY_LENGTH = 100
 const BUFFER_WINDOW = 0.3
@@ -10,7 +11,8 @@ var grav_mod = 1.0
 var push_left = Vector2(-300, 0)
 var push_right = Vector2(300, 0)
 var push_target = null
-
+var on_ladder = false
+var climbing = false
 #Buffer system
 
 
@@ -25,15 +27,28 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * grav_mod * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and $FloorDetector.get_collision_count() != 0:
+	if Input.is_action_just_pressed("jump") and $FloorDetector.get_collision_count() != 0 and not on_ladder:
 		velocity.y = JUMP_VELOCITY
-	elif Input.is_action_pressed("ui_accept") and velocity.y < 200:
+	elif Input.is_action_pressed("jump") and velocity.y < 200:
 		grav_mod = 0.8
 	else:
 		grav_mod = 1
 	
-	if Input.is_action_just_released("ui_accept") and velocity.y <0:
+	if Input.is_action_just_released("jump") and velocity.y <0:
 		velocity.y = 0
+	
+	# Handle climbing.
+	if Input.is_action_pressed("jump") and on_ladder:
+		climbing = true
+		
+	var direction_y := Input.get_axis("jump", "ui_down")
+	if climbing and direction_y:
+		velocity.y = direction_y * CLIMB_SPEED
+	elif climbing and not direction_y:
+		velocity.y = move_toward(velocity.y, 0, CLIMB_SPEED)
+		
+	if $FloorDetector.get_collision_count() != 0: climbing = false 
+
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -146,3 +161,15 @@ func snap_to_floor():
 	var floor_distance = $BottomIndicator.global_position.y - global_position.y
 	var snap =  furthest_distance - floor_distance
 	global_position.y += snap
+
+
+func _on_enter_ladder(area: Area2D) -> void:
+	if area.is_in_group("Ladder"):
+		on_ladder = true
+
+
+
+func _on_exit_ladder(area: Area2D) -> void:
+	if area.is_in_group("Ladder"):
+		on_ladder = false	
+		climbing = false
