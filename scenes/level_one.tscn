@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://bkb4ifmxnfc0s" path="res://scenes/target_marker.tscn" id="6_s6ikc"]
 
 [node name="LevelOne" type="Node2D"]
-position = Vector2(0, 7)
 script = ExtResource("1_bhu28")
 
 [node name="TileMap" parent="." instance=ExtResource("2_4p75b")]
