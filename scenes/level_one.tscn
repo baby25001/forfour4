@@ -34,8 +34,8 @@ metadata/TileMap = NodePath("../TileMap")
 metadata/TargetPos = NodePath("../../TargetZone")
 
 [node name="TargetZone" parent="." instance=ExtResource("6_s6ikc")]
-position = Vector2(791, 421)
-scale = Vector2(0.6, 0.6)
+position = Vector2(793, 420)
+scale = Vector2(0.10166671, 0.0991146)
 metadata/IsTarget = true
 metadata/TileMap = NodePath("../TileMap")
 
