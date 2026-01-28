@@ -26,15 +26,15 @@ position = Vector2(0, -33)
 [node name="Menu" parent="." instance=ExtResource("7_c00e3")]
 
 [node name="Character" parent="." instance=ExtResource("6_c00e3")]
-position = Vector2(425, 176)
+position = Vector2(428, 414)
 
 [node name="PushBox" parent="." instance=ExtResource("7_0l1we")]
-position = Vector2(178, 417)
+position = Vector2(297, 414)
 metadata/TileMap = NodePath("../TileMap")
-metadata/is_sliding = true
+metadata/IsSliding = true
 
 [node name="PushBox2" parent="." instance=ExtResource("7_0l1we")]
-position = Vector2(176, 298)
+position = Vector2(295, 292)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="TargetMark" parent="PushBox2" instance=ExtResource("8_0l1we")]

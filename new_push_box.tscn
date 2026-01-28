@@ -19,6 +19,7 @@ size = Vector2(10, 30)
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_sjj5x")
 metadata/TileMap = NodePath("")
+metadata/IsSliding = false
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(1.667, 1.667)

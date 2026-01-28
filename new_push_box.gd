@@ -17,7 +17,7 @@ signal stopped_moving
 signal started_moving
 
 func _enter_tree() -> void:
-	is_sliding = get_meta("is_sliding")
+	is_sliding = get_meta("IsSliding")
 	tile_map = get_node(get_meta("TileMap")).get_node("Platform")
 	if tile_map != null:
 		global_position = snap_to_grid()

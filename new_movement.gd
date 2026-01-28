@@ -104,7 +104,10 @@ func change_push_target(collider: Object) -> bool: # changes push target, return
 		return false
 	
 	if push_target != null:
-		player_pushed.disconnect(push_target._on_block_push)
+		if player_pushed.is_connected(push_target._on_block_push):
+			player_pushed.disconnect(push_target._on_block_push)
+		else:
+			player_pushed.disconnect(push_target._on_block_slide)
 		push_target = null
 	
 	if collider == null:
