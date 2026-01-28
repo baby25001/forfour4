@@ -8,7 +8,7 @@ texture = ExtResource("1_ukv2n")
 texture_region_size = Vector2i(122, 122)
 0:0/0 = 0
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-59.767677, -61, 59.767685, -61, 59.767685, 51.14142, -59.767677, 51.14142)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-58.535355, -61, 58.535362, -61, 58.535362, 54.838387, -58.535355, 54.838387)
 2:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_oi3di"]

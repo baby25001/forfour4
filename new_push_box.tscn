@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dp2548xx1mi1f"]
+[gd_scene load_steps=7 format=3 uid="uid://dp2548xx1mi1f"]
 
 [ext_resource type="Script" uid="uid://dtkcsfep85rs6" path="res://new_push_box.gd" id="1_sjj5x"]
 [ext_resource type="Texture2D" uid="uid://dfp4afsmbm24f" path="res://Box.png" id="1_wjxrl"]
@@ -11,6 +11,9 @@ size = Vector2(195, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1sdc"]
 size = Vector2(185, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yvg10"]
+size = Vector2(10, 30)
 
 [node name="PushBox" type="CharacterBody2D"]
 scale = Vector2(0.6, 0.6)
@@ -40,3 +43,11 @@ position = Vector2(0, 101.666664)
 [node name="BoxDetector" type="ShapeCast2D" parent="."]
 shape = SubResource("RectangleShape2D_x1sdc")
 target_position = Vector2(0, -130)
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+
+[node name="LowWallDetector" type="ShapeCast2D" parent="."]
+position = Vector2(0, 130)
+shape = SubResource("RectangleShape2D_yvg10")
+target_position = Vector2(100, 0)

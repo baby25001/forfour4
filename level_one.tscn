@@ -29,8 +29,9 @@ position = Vector2(0, -33)
 position = Vector2(425, 176)
 
 [node name="PushBox" parent="." instance=ExtResource("7_0l1we")]
-position = Vector2(178, 421)
+position = Vector2(178, 417)
 metadata/TileMap = NodePath("../TileMap")
+metadata/is_sliding = true
 
 [node name="PushBox2" parent="." instance=ExtResource("7_0l1we")]
 position = Vector2(176, 298)
