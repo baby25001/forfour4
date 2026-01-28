@@ -52,3 +52,7 @@ target_position = Vector2(0, 0)
 position = Vector2(0, 130)
 shape = SubResource("RectangleShape2D_yvg10")
 target_position = Vector2(100, 0)
+
+[node name="FloorRay" type="RayCast2D" parent="."]
+target_position = Vector2(0, 200)
+hit_from_inside = true

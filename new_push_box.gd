@@ -96,7 +96,7 @@ func move(motion: Vector2):
 	
 	if direction_vector.y > 0 and sliding:
 		if check_low_wall():
-			sliding = 0
+			stop_sliding()
 			velocity.x = 0
 			motion.x = 0
 			print("LowWall!!")
@@ -108,7 +108,7 @@ func move(motion: Vector2):
 	else:
 		#print("collision happened?")
 		self_modulate.r = 1
-		sliding = 0
+		stop_sliding()
 		push_length = 0
 		global_position.x = snap_to_grid().x
 		#move_and_collide(x_test.get_remainder())
@@ -189,10 +189,17 @@ func slide(direction):
 	sliding = direction
 
 func check_low_wall():
-	$LowWallDetector.target_position.x = sliding * 100
+	print("CHECK LOW WALL RAN")
+	$LowWallDetector.target_position.x = sliding * 50
+	$LowWallDetector.position.x = sliding * 50
 	$LowWallDetector.force_shapecast_update()
 	var count =  $LowWallDetector.get_collision_count()
 	if count == 0:
+		return false
+	
+	$FloorRay.force_raycast_update()
+	if  $FloorRay.is_colliding():
+		print("WAIT WHAT")
 		return false
 	
 	for n in count:
@@ -216,3 +223,8 @@ func _on_block_slide(direction):
 	#	print("push_left")
 	
 	slide(direction)
+
+func stop_sliding():
+	sliding = 0
+	if get_top_box():
+		get_top_box().stop_sliding()
