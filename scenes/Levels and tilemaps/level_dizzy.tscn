@@ -30,12 +30,16 @@ metadata/tile_map = NodePath("../TileMap")
 
 [node name="Railing3" parent="." instance=ExtResource("4_l2uv4")]
 position = Vector2(57, -57)
-collision_layer = 1
 collision_mask = 2
 metadata/tile_map = NodePath("../TileMap")
 
 [node name="Railing4" parent="." instance=ExtResource("4_l2uv4")]
 position = Vector2(183, 64)
+collision_mask = 2
+metadata/tile_map = NodePath("../TileMap")
+
+[node name="Railing4" parent="Railing4" instance=ExtResource("4_l2uv4")]
+position = Vector2(-486, 0)
 collision_mask = 2
 metadata/tile_map = NodePath("../TileMap")
 

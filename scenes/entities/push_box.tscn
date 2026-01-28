@@ -37,6 +37,7 @@ shape = SubResource("RectangleShape2D_eosmo")
 position = Vector2(0, 90)
 shape = SubResource("RectangleShape2D_lajmy")
 target_position = Vector2(0, 20)
+collision_mask = 3
 
 [node name="X_Indicator" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -59,4 +60,5 @@ target_position = Vector2(100, 0)
 
 [node name="FloorRay" type="RayCast2D" parent="."]
 target_position = Vector2(0, 200)
+collision_mask = 3
 hit_from_inside = true

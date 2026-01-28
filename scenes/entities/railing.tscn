@@ -15,6 +15,7 @@ script = ExtResource("1_8a6kn")
 metadata/tile_map = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 3
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_q6y0q")
 
@@ -22,9 +23,12 @@ texture = ExtResource("2_q6y0q")
 position = Vector2(-0.00024414063, -49.250015)
 scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_aghi4")
+one_way_collision = true
 
 [node name="ObjectDetector" type="Area2D" parent="."]
 position = Vector2(0, 1)
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ObjectDetector"]
 position = Vector2(0, -181.5)
