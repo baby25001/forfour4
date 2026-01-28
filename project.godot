@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 window/size/viewport_width=976
 window/size/viewport_height=732
 
+[global_group]
+
+Ladder=""
+
 [input]
 
 ui_accept={
