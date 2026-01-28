@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cck7h48uou84v"]
+[gd_scene load_steps=10 format=3 uid="uid://cck7h48uou84v"]
 
 [ext_resource type="Script" uid="uid://chrg86ye6rsjm" path="res://scenes/main_game.gd" id="1_72e8q"]
+[ext_resource type="Script" uid="uid://c8rdansl3dnh6" path="res://scenes/name.gd" id="3_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_d2op2"]
 
 [sub_resource type="Animation" id="Animation_ipu61"]
@@ -72,6 +73,9 @@ _data = {
 &"restart": SubResource("Animation_d2op2")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_72e8q"]
+font_size = 40
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_72e8q")
 
@@ -103,6 +107,16 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="Animate"]
 texture = ExtResource("3_d2op2")
+
+[node name="Name" type="Label" parent="."]
+offset_left = -66.0
+offset_top = -564.0
+offset_right = 39.0
+offset_bottom = -509.0
+text = "asdfa"
+label_settings = SubResource("LabelSettings_72e8q")
+horizontal_alignment = 1
+script = ExtResource("3_0rdsr")
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

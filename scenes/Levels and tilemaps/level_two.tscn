@@ -38,3 +38,8 @@ position = Vector2(-56.000046, -72.999985)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+
+[connection signal="started_moving" from="PushBox3" to="PushBox3/TargetMark" method="_on_start_moving"]
+[connection signal="stopped_moving" from="PushBox3" to="PushBox3/TargetMark" method="_on_stop_moving"]
+[connection signal="reached_target" from="PushBox3/TargetMark" to="." method="_level_finished"]
+[connection signal="reached_target" from="TargetPos" to="." method="_level_finished"]

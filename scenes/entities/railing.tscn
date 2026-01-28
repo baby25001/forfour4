@@ -22,7 +22,6 @@ texture = ExtResource("2_q6y0q")
 position = Vector2(-0.00024414063, -49.250015)
 scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_aghi4")
-one_way_collision = true
 
 [node name="ObjectDetector" type="Area2D" parent="."]
 position = Vector2(0, 1)

@@ -116,7 +116,6 @@ func move(motion: Vector2):
 		debug_x(Vector2(0,0))
 		self_modulate.r = 0
 	else:
-		#print("collision happened?")
 		self_modulate.r = 1
 		stop_sliding()
 		push_length = 0
@@ -133,6 +132,7 @@ func move(motion: Vector2):
 	if y_test == null:
 		pass
 	else:
+		print(self, "collision y happened?")
 		if y_test.get_collider() is CharacterBody2D and direction_vector.y == -1:
 			if y_test.get_collider().has_method("_on_under_moved"):
 				var fail_code = y_test.get_collider()._on_under_moved(self, motion, true)
@@ -209,7 +209,7 @@ func check_low_wall():
 	
 	$FloorRay.force_raycast_update()
 	if  $FloorRay.is_colliding():
-		print("WAIT WHAT")
+		#print("WAIT WHAT")
 		return false
 	
 	for n in count:

@@ -4,18 +4,22 @@ var current_level = 0
 var current_level_node: Node2D
 var level_list = [
 	{"name" : "default",
-	#"level" : preload("res://scenes/Levels and tilemaps/level_one.tscn")},
-	"level" : preload("res://scenes/Levels and tilemaps/level_two.tscn")},
+	"level" : preload("res://scenes/Levels and tilemaps/level_one.tscn")},
+	#"level" : preload("res://scenes/Levels and tilemaps/level_two.tscn")},
 	{"name" : "default",
 	"level" : preload("res://scenes/Levels and tilemaps/level_two.tscn")},
+	{"name" : "default",
+	"level" : preload("res://scenes/Levels and tilemaps/level_three.tscn")},
 ]
 
 
 func _ready():
-	#$AnimationPlayer.play("enter")
+	
 	load_current()
 	#await get_tree().create_timer(0.1).timeout
-	#current_level_node.process_mode = Node.PROCESS_MODE_DISABLED
+	current_level_node.process_mode = Node.PROCESS_MODE_DISABLED
+	$AnimationPlayer.play("enter")
+	
 	
 
 

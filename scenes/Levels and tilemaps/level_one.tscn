@@ -45,8 +45,9 @@ metadata/IsTarget = true
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="Railing" parent="." instance=ExtResource("7_bttrn")]
-position = Vector2(-562, -52)
+position = Vector2(75, -65)
 rotation = -1.5707964
+collision_layer = 1
 metadata/tile_map = NodePath("../TileMap")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Ladder"]]
@@ -56,6 +57,8 @@ rotation = -1.5707964
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(236.00005, -961)
 shape = SubResource("RectangleShape2D_bttrn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="started_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_start_moving"]
 [connection signal="stopped_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_stop_moving"]

@@ -47,6 +47,8 @@ func _on_start_moving():
 	moving = true
 
 func _on_stop_moving():
+	print(in_target)
 	if in_target:
+		print("alright")
 		reached_target.emit()
 	moving = false
