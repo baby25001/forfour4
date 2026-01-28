@@ -3,6 +3,7 @@ extends CharacterBody2D
 const TOP_SPEED = 500
 const MIN_SPEED = 100
 const SLIDE_SPEED = 400
+var has_started = false
 var push_speed : float
 var step = 20;
 var target_x: float = position.x
@@ -19,15 +20,23 @@ signal started_moving
 func _enter_tree() -> void:
 	is_sliding = get_meta("IsSliding")
 	tile_map = get_node(get_meta("TileMap")).get_node("Platform")
+	
 	if tile_map != null:
 		global_position = snap_to_grid()
-		apply_floor_snap()
 		step = tile_map.map_to_local(Vector2(1,0)).x - tile_map.map_to_local(Vector2(0,0)).x
+
+func start():
+	if tile_map != null:
+		apply_floor_snap()
 	print(step)
 	target_x = position.x
+	has_started = true
 
 var prev_floor;
 func _physics_process(delta):
+	if not has_started:
+		start()
+	
 	if $FloorDetector.get_collision_count() == 0:
 		velocity += get_gravity() * delta
 	

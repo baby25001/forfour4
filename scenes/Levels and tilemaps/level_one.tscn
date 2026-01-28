@@ -28,7 +28,7 @@ position = Vector2(-189, 50.00003)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="PushBox2" parent="." instance=ExtResource("5_0rv3x")]
-position = Vector2(-196, -75)
+position = Vector2(-184, -100)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="TargetMark" parent="PushBox2" instance=ExtResource("6_ucfn2")]
