@@ -27,21 +27,21 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * grav_mod * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and $FloorDetector.get_collision_count() != 0 and not on_ladder:
+	if Input.is_action_just_pressed("jump") and $FloorDetector.get_collision_count() != 0 and not on_ladder:
 		velocity.y = JUMP_VELOCITY
-	elif Input.is_action_pressed("ui_accept") and velocity.y < 200:
+	elif Input.is_action_pressed("jump") and velocity.y < 200:
 		grav_mod = 0.8
 	else:
 		grav_mod = 1
 	
-	if Input.is_action_just_released("ui_accept") and velocity.y <0:
+	if Input.is_action_just_released("jump") and velocity.y <0:
 		velocity.y = 0
 	
 	# Handle climbing.
-	if Input.is_action_pressed("ui_accept") and on_ladder:
+	if Input.is_action_pressed("jump") and on_ladder:
 		climbing = true
 		
-	var direction_y := Input.get_axis("ui_accept", "ui_down")
+	var direction_y := Input.get_axis("jump", "ui_down")
 	if climbing and direction_y:
 		velocity.y = direction_y * CLIMB_SPEED
 	elif climbing and not direction_y:
