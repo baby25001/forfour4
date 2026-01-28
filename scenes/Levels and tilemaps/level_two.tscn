@@ -11,7 +11,6 @@ script = ExtResource("1_4jmmx")
 metadata/next_level = 2
 
 [node name="TileMap" parent="." instance=ExtResource("1_l1uaw")]
-process_mode = 4
 
 [node name="PushBox" parent="." instance=ExtResource("2_4jmmx")]
 position = Vector2(-60, 50.000004)

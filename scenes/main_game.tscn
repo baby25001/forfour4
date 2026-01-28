@@ -1,23 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cck7h48uou84v"]
+[gd_scene load_steps=8 format=3 uid="uid://cck7h48uou84v"]
 
 [ext_resource type="Script" uid="uid://chrg86ye6rsjm" path="res://scenes/main_game.gd" id="1_72e8q"]
-[ext_resource type="PackedScene" uid="uid://bvq4vyqc5f8ek" path="res://scenes/Levels and tilemaps/level_one.tscn" id="1_s3esy"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_d2op2"]
-
-[sub_resource type="Animation" id="Animation_0rdsr"]
-resource_name = "enter"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animate:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.21763788, 1.3660402),
-"update": 0,
-"values": [Vector2(0, -2000), Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_ipu61"]
 length = 0.001
@@ -34,9 +18,8 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_d2op2"]
-resource_name = "restart"
-length = 0.1
+[sub_resource type="Animation" id="Animation_0rdsr"]
+resource_name = "enter"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -44,10 +27,10 @@ tracks/0/path = NodePath("Animate:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(0.17677669, 1, 21.112127),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.21763788, 1.3660402),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0)]
+"values": [Vector2(0, -2000), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ygxny"]
@@ -63,6 +46,22 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2.378415, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 2000)]
+}
+
+[sub_resource type="Animation" id="Animation_d2op2"]
+resource_name = "restart"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animate:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(0.17677669, 1, 21.112127),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -100), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ygxny"]
@@ -87,10 +86,6 @@ color = Color(0, 0, 0, 1)
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(-200, 0)
 zoom = Vector2(0.55, 0.55)
-
-[node name="LevelOne" parent="." instance=ExtResource("1_s3esy")]
-process_mode = 4
-visible = false
 
 [node name="Restart" type="Button" parent="."]
 offset_left = -961.0
