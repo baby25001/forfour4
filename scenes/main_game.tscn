@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://cck7h48uou84v"]
+
+[ext_resource type="Script" uid="uid://chrg86ye6rsjm" path="res://scenes/main_game.gd" id="1_72e8q"]
+[ext_resource type="PackedScene" uid="uid://bvq4vyqc5f8ek" path="res://scenes/Levels and tilemaps/level_one.tscn" id="1_s3esy"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_72e8q")
+
+[node name="Background" type="ColorRect" parent="."]
+z_index = -10
+offset_left = -1383.0
+offset_top = -832.0
+offset_right = 1116.0
+offset_bottom = 1246.0
+color = Color(0, 0, 0, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(-200, 0)
+zoom = Vector2(0.5, 0.5)
+
+[node name="LevelOne" parent="." instance=ExtResource("1_s3esy")]
+process_mode = 4
+position = Vector2(0, 0)
+
+[node name="Restart" type="Button" parent="."]
+offset_left = -961.0
+offset_top = -282.0
+offset_right = -794.0
+offset_bottom = -116.0
+text = "RESTART"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Animate" type="Node2D" parent="."]
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]

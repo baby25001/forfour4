@@ -25,14 +25,14 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * grav_mod * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and $FloorDetector.get_collision_count() != 0:
+	if Input.is_action_just_pressed("jump") and $FloorDetector.get_collision_count() != 0:
 		velocity.y = JUMP_VELOCITY
-	elif Input.is_action_pressed("ui_accept") and velocity.y < 200:
+	elif Input.is_action_pressed("jump") and velocity.y < 200:
 		grav_mod = 0.8
 	else:
 		grav_mod = 1
 	
-	if Input.is_action_just_released("ui_accept") and velocity.y <0:
+	if Input.is_action_just_released("jump") and velocity.y <0:
 		velocity.y = 0
 	
 	# Get the input direction and handle the movement/deceleration.
