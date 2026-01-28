@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkb4ifmxnfc0s"]
+
+[ext_resource type="Texture2D" uid="uid://bn4n234yqlndy" path="res://sprites/Nail Label.PNG" id="1_3qnoh"]
+[ext_resource type="Script" uid="uid://i4rk86gtri1r" path="res://scripts/target_detector.gd" id="1_fsxb1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qnoh"]
+size = Vector2(622.7545, 550.8982)
+
+[node name="TargetMark" type="Sprite2D"]
+visibility_layer = 17
+z_index = 1
+scale = Vector2(0.167, 0.167)
+texture = ExtResource("1_3qnoh")
+script = ExtResource("1_fsxb1")
+metadata/TargetPos = NodePath("")
+metadata/IsTarget = false
+metadata/TileMap = NodePath("")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(-4.9967966e-06, 5.988024)
+shape = SubResource("RectangleShape2D_3qnoh")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

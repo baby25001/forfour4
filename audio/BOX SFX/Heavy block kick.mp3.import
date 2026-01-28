@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c18nlajvkdkaa"
+path="res://.godot/imported/Heavy block kick.mp3-8e5ccd8414154eec216ca7b4f3d25306.mp3str"
+
+[deps]
+
+source_file="res://audio/BOX SFX/Heavy block kick.mp3"
+dest_files=["res://.godot/imported/Heavy block kick.mp3-8e5ccd8414154eec216ca7b4f3d25306.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://oea2uyph2jxn"]
+
+[ext_resource type="Script" uid="uid://dyqlpfgyj5isq" path="res://scripts/movement.gd" id="1_c2tta"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_wa5vi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pjt0s"]
+size = Vector2(128, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wa5vi"]
+size = Vector2(127.50006, 3.1249886)
+
+[node name="Character" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
+floor_snap_length = 21.5
+script = ExtResource("1_c2tta")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wa5vi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wfnr8")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(100, 0)
+
+[node name="FloorDetector" type="ShapeCast2D" parent="."]
+shape = SubResource("RectangleShape2D_pjt0s")
+target_position = Vector2(0, 64)
+
+[node name="BottomIndicator" type="Node2D" parent="."]
+position = Vector2(0, 64)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="RailingDetector" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(6.0349685e-06, -84.687485)
+scale = Vector2(0.9999992, 0.9999992)
+shape = SubResource("RectangleShape2D_wa5vi")

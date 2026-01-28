@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=4 uid="uid://c1b5tmmufwn7y"]
+
+[ext_resource type="Texture2D" uid="uid://bsfc8s3tjxcfc" path="res://Background.png" id="1_ukv2n"]
+[ext_resource type="Script" uid="uid://xuleb62wx2oh" path="res://scripts/test_gridsize.gd" id="2_5vkxt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukv2n"]
+texture = ExtResource("1_ukv2n")
+texture_region_size = Vector2i(122, 122)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-58.535355, -61, 58.535362, -61, 58.535362, 54.838387, -58.535355, 54.838387)
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_oi3di"]
+tile_size = Vector2i(122, 122)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ukv2n")
+
+[sub_resource type="TileSet" id="TileSet_7htx2"]
+tile_size = Vector2i(1200, 1200)
+physics_layer_0/collision_layer = 1
+
+[node name="TileMap" type="Node2D"]
+position = Vector2(122, 0)
+
+[node name="Background" type="TileMapLayer" parent="."]
+z_index = -3
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAMAAAAAAAAAAAABAAIAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAMAAAAAAAAAAAACAAQAAAAAAAAAAAABAAQAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAADAAIAAAAAAAAAAAADAAMAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAEAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_oi3di")
+collision_enabled = false
+script = ExtResource("2_5vkxt")
+
+[node name="Platform" type="TileMapLayer" parent="."]
+z_index = 10
+tile_map_data = PackedByteArray("AAAAAAQAAAABAAAAAAAAAAUAAAABAAAAAAABAAUAAAABAAAAAAABAAQAAAABAAAAAAACAAQAAAABAAAAAAACAAUAAAABAAAAAAAAAAAAAAABAAAAAAABAAAAAAABAAAAAAACAAAAAAABAAAAAAD//wUAAAABAAAAAAD//wQAAAABAAAAAAD//wMAAAABAAAAAAD//wIAAAABAAAAAAD//wEAAAABAAAAAAD//wAAAAABAAAAAAADAAUAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAABAAAAAAADAAAAAAABAAAAAAAEAAAAAAABAAAAAAAFAAAAAAABAAAAAAAFAAQAAAABAAAAAAADAAIAAAABAAAAAAAEAAIAAAABAAAAAAAFAAIAAAABAAAAAAAFAAEAAAABAAAAAAAGAAAAAAABAAAAAAAGAAEAAAABAAAAAAAGAAIAAAABAAAAAAAGAAMAAAABAAAAAAAGAAQAAAABAAAAAAAGAAUAAAABAAAAAAADAAQAAAABAAAAAAA=")
+tile_set = SubResource("TileSet_oi3di")
+
+[node name="TargetZone" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAAFAAMAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_oi3di")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_7htx2")

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ntm6pu2f3k7q"
+path="res://.godot/imported/heavy block fall.mp3-bb91e2d61bfe36bfbcdb274a28920e1a.mp3str"
+
+[deps]
+
+source_file="res://audio/BOX SFX/heavy block fall.mp3"
+dest_files=["res://.godot/imported/heavy block fall.mp3-bb91e2d61bfe36bfbcdb274a28920e1a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
