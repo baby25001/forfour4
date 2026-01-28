@@ -10,6 +10,9 @@ var moving : bool = false
 var push_direction: int = 0
 var push_length: float = 0 
 
+signal stopped_moving
+signal started_moving
+
 func _enter_tree() -> void:
 	tile_map = get_node(get_meta("TileMap")).get_node("Platform")
 	if tile_map != null:
@@ -36,8 +39,14 @@ func _physics_process(delta):
 		push_length = 0
 	
 	if velocity == Vector2(0,0):
+		if moving == true:
+			print("STOPPED MOVING")
+			stopped_moving.emit()
 		moving = false
 	else:
+		if moving == false:
+			print("STARTED MOVING")
+			started_moving.emit()
 		moving = true
 	move(velocity*delta)
 
@@ -75,10 +84,10 @@ func move(motion: Vector2):
 	if x_test == null:
 		move_and_collide(Vector2(motion.x, 0))
 		debug_x(Vector2(0,0))
-		modulate.r = 0
+		self_modulate.r = 0
 	else:
 		#print("collision happened?")
-		modulate.r = 1
+		self_modulate.r = 1
 		move_and_collide(x_test.get_remainder())
 		debug_x(x_test.get_normal())
 		if x_test.get_normal().y != 0:
