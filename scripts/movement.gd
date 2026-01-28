@@ -61,6 +61,8 @@ func _physics_process(delta: float) -> void:
 	
 	change_push_target(ray.get_collider())
 	if Input.is_action_just_pressed("ui_push"):
+		if ray.get_collider():
+			print(ray.get_collider())
 		player_pushed.emit(direction)
 	
 	move(velocity * delta)

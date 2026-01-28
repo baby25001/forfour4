@@ -24,18 +24,19 @@ func _enter_tree() -> void:
 	if tile_map != null:
 		global_position = snap_to_grid()
 		step = tile_map.map_to_local(Vector2(1,0)).x - tile_map.map_to_local(Vector2(0,0)).x
-
-func start():
-	if tile_map != null:
+		#if tile_map != null:
 		apply_floor_snap()
-	print(step)
-	target_x = position.x
-	has_started = true
+		print(step)
+		target_x = position.x
+		has_started = true
+
+#func start():
+#	
 
 var prev_floor;
 func _physics_process(delta):
-	if not has_started:
-		start()
+	#if not has_started:
+	#	start()
 	
 	if $FloorDetector.get_collision_count() == 0:
 		velocity += get_gravity() * delta
@@ -122,8 +123,8 @@ func move(motion: Vector2):
 		global_position.x = snap_to_grid().x
 		#move_and_collide(x_test.get_remainder())
 		debug_x(x_test.get_normal())
-		if x_test.get_normal().y != 0:
-			print(self, x_test.get_collider())
+		#if x_test.get_normal().y != 0:
+		#	print(self, x_test.get_collider())
 #	else:
 		#print("yeah stop em!")
 	
