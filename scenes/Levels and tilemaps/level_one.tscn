@@ -25,14 +25,14 @@ offset_right = 122.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Character" parent="." instance=ExtResource("4_ju4um")]
-position = Vector2(164, -183)
+position = Vector2(60.999996, 54)
 
 [node name="PushBox" parent="." instance=ExtResource("5_0rv3x")]
-position = Vector2(-69, 44.00003)
+position = Vector2(306, -183)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="PushBox2" parent="." instance=ExtResource("5_0rv3x")]
-position = Vector2(-76, -81)
+position = Vector2(56, -71)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="TargetMark" parent="PushBox2" instance=ExtResource("6_ucfn2")]
@@ -45,9 +45,8 @@ metadata/IsTarget = true
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="Railing" parent="." instance=ExtResource("7_bttrn")]
-position = Vector2(75, -65)
-rotation = -1.5707964
-collision_layer = 1
+position = Vector2(50, -66)
+collision_mask = 2
 metadata/tile_map = NodePath("../TileMap")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Ladder"]]
@@ -59,6 +58,11 @@ position = Vector2(236.00005, -961)
 shape = SubResource("RectangleShape2D_bttrn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Railing2" parent="." instance=ExtResource("7_bttrn")]
+position = Vector2(305, 179)
+collision_mask = 2
+metadata/tile_map = NodePath("../TileMap")
 
 [connection signal="started_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_start_moving"]
 [connection signal="stopped_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_stop_moving"]
