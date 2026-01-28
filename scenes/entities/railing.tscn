@@ -12,6 +12,7 @@ size = Vector2(120, 3)
 [node name="Railing" type="StaticBody2D"]
 collision_layer = 0
 script = ExtResource("1_8a6kn")
+metadata/tile_map = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)

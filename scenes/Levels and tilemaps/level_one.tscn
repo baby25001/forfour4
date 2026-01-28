@@ -20,14 +20,14 @@ offset_right = 122.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Character" parent="." instance=ExtResource("4_ju4um")]
-position = Vector2(547, 180)
+position = Vector2(561, 419)
 
 [node name="PushBox" parent="." instance=ExtResource("5_0rv3x")]
-position = Vector2(305.00003, 420)
+position = Vector2(435, 418.00003)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="PushBox2" parent="." instance=ExtResource("5_0rv3x")]
-position = Vector2(305, 298)
+position = Vector2(428, 293)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="TargetMark" parent="PushBox2" instance=ExtResource("6_ucfn2")]
@@ -40,7 +40,9 @@ metadata/IsTarget = true
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="Railing" parent="." instance=ExtResource("7_bttrn")]
-position = Vector2(427, 301)
+position = Vector2(426, 321)
+rotation = -1.5707964
+metadata/tile_map = NodePath("../TileMap")
 
 [connection signal="started_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_start_moving"]
 [connection signal="stopped_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_stop_moving"]
