@@ -43,6 +43,7 @@ shape = SubResource("RectangleShape2D_eosmo")
 position = Vector2(0, 90)
 shape = SubResource("RectangleShape2D_lajmy")
 target_position = Vector2(0, 20)
+collision_mask = 3
 
 [node name="X_Indicator" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)

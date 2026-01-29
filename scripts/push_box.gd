@@ -240,3 +240,14 @@ func stop_sliding():
 	sliding = 0
 	if get_top_box():
 		get_top_box().stop_sliding()
+
+func is_pushable(direction):
+	if moving: return false
+	
+	$WallDetector.target_position.x = direction * step
+	$WallDetector.force_raycast_update()
+	if $WallDetector.is_colliding():
+		print("NEATO")
+		return false
+	
+	return true
