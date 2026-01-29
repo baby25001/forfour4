@@ -22,7 +22,7 @@ var level_list = [
 	{"name" : "musical boxes",
 	"level" : preload("res://scenes/Levels and tilemaps/level_dizzy.tscn")},
 ]
-
+signal bgm_changed()
 
 
 
@@ -48,6 +48,9 @@ func _on_level_change(to) -> void:
 	GM.first_time = true
 	current_level += 1
 	#current_level = to
+	if current_level == 3 or current_level == 6:
+		print("bgm changed")
+		bgm_changed.emit()
 	if current_level >= level_list.size():
 		return
 	

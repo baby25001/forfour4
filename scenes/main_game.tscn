@@ -122,5 +122,6 @@ script = ExtResource("3_0rdsr")
 
 [node name="BGM_player" parent="." instance=ExtResource("4_0rdsr")]
 
+[connection signal="bgm_changed" from="." to="BGM_player" method="_shift_variation_forward"]
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

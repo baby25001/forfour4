@@ -1,6 +1,6 @@
 extends Node2D
 
-var current_level = 6
+var current_level = 5
 var current_level_node: Node2D
 var level_list = [
 	{"name" : "Introduction to Cardboards",
@@ -47,8 +47,9 @@ func _on_level_change(to) -> void:
 	
 	current_level += 1
 	#current_level = to
-	if current_level == 3:
-		pass
+	if current_level == 3 or current_level == 6:
+		print("BGM CHANGED")
+		bgm_changed.emit()
 	if current_level >= level_list.size():
 		return
 	
