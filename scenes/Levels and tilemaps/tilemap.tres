@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dv7emsvlg6y6f"]
 
 [ext_resource type="Texture2D" uid="uid://bsfc8s3tjxcfc" path="res://Background.png" id="1_bidf7"]
-[ext_resource type="Texture2D" uid="uid://bavayrnyc2axh" path="res://Revised platform 1220 cropped(1).png" id="2_bwy1e"]
+[ext_resource type="Texture2D" uid="uid://bavayrnyc2axh" path="res://sprites/Revised platform 1220 cropped(1).png" id="2_bidf7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukv2n"]
 texture = ExtResource("1_bidf7")
@@ -12,11 +12,11 @@ texture_region_size = Vector2i(122, 122)
 2:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4pdqx"]
-texture = ExtResource("2_bwy1e")
+texture = ExtResource("2_bidf7")
 margins = Vector2i(2, 1)
 texture_region_size = Vector2i(120, 120)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-58.56, -61, 58.560005, -61, 58.560005, 51.240005, -58.56, 51.240005)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57.95, -61, 57.949997, -61, 57.949997, 45.75, -57.95, 45.75)
 
 [resource]
 tile_size = Vector2i(122, 122)

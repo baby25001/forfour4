@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bavayrnyc2axh"
-path="res://.godot/imported/Revised platform 1220 cropped(1).png-2afe786501598edfba12c6e6749a2fdd.ctex"
+uid="uid://csxj180f8qvff"
+path="res://.godot/imported/box wheelbase.PNG-b389eab5ed2009893bd0b388428e8f20.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Revised platform 1220 cropped(1).png"
-dest_files=["res://.godot/imported/Revised platform 1220 cropped(1).png-2afe786501598edfba12c6e6749a2fdd.ctex"]
+source_file="res://sprites/box wheelbase.PNG"
+dest_files=["res://.godot/imported/box wheelbase.PNG-b389eab5ed2009893bd0b388428e8f20.ctex"]
 
 [params]
 

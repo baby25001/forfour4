@@ -1,14 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmmkpmn3ckob0"]
+[gd_scene load_steps=7 format=3 uid="uid://dmmkpmn3ckob0"]
 
 [ext_resource type="Script" uid="uid://vvjmp0m3ptt6" path="res://scripts/level.gd" id="1_xa18e"]
 [ext_resource type="PackedScene" uid="uid://b6cotd5qg7yhk" path="res://scenes/Levels and tilemaps/three.tscn" id="2_xa18e"]
 [ext_resource type="PackedScene" uid="uid://dp2548xx1mi1f" path="res://scenes/entities/push_box.tscn" id="3_xtgt7"]
 [ext_resource type="PackedScene" uid="uid://j0myjp2dskbc" path="res://scenes/entities/slide_box.tscn" id="4_gp5a7"]
 [ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://scenes/entities/character.tscn" id="5_fodsw"]
+[ext_resource type="PackedScene" uid="uid://bkb4ifmxnfc0s" path="res://scenes/target_marker.tscn" id="5_gp5a7"]
 
-[node name="LevelTwo" type="Node2D"]
+[node name="LevelThree" type="Node2D"]
 script = ExtResource("1_xa18e")
-metadata/next_level = 0
+metadata/next_level = 3
 
 [node name="TileMap" parent="." instance=ExtResource("2_xa18e")]
 
@@ -20,8 +21,21 @@ metadata/TileMap = NodePath("../TileMap")
 position = Vector2(-173, -186)
 metadata/TileMap = NodePath("../TileMap")
 
+[node name="TargetMark" parent="SlideBox" instance=ExtResource("5_gp5a7")]
+metadata/TargetPos = NodePath("../../TargetMark")
+
 [node name="Character" parent="." instance=ExtResource("5_fodsw")]
 position = Vector2(-305.99997, -67.99999)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
+
+[node name="TargetMark" parent="." instance=ExtResource("5_gp5a7")]
+position = Vector2(307, 59)
+scale = Vector2(0.1, 0.1)
+metadata/IsTarget = true
+metadata/TileMap = NodePath("../TileMap")
+
+[connection signal="started_moving" from="SlideBox" to="SlideBox/TargetMark" method="_on_start_moving"]
+[connection signal="stopped_moving" from="SlideBox" to="SlideBox/TargetMark" method="_on_stop_moving"]
+[connection signal="reached_target" from="SlideBox/TargetMark" to="." method="_level_finished"]

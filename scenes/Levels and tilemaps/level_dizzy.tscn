@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dch2p04jm6rd6"]
+[gd_scene load_steps=7 format=3 uid="uid://dch2p04jm6rd6"]
 
 [ext_resource type="Script" uid="uid://vvjmp0m3ptt6" path="res://scripts/level.gd" id="1_75d2b"]
 [ext_resource type="PackedScene" uid="uid://btes6m6aet8e5" path="res://scenes/Levels and tilemaps/dizzy.tscn" id="2_4lg8w"]
 [ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://scenes/entities/character.tscn" id="3_hs0pi"]
 [ext_resource type="PackedScene" uid="uid://d0qt18pkwc3i1" path="res://scenes/entities/railing.tscn" id="4_l2uv4"]
 [ext_resource type="PackedScene" uid="uid://dp2548xx1mi1f" path="res://scenes/entities/push_box.tscn" id="5_l278w"]
+[ext_resource type="PackedScene" uid="uid://bkb4ifmxnfc0s" path="res://scenes/target_marker.tscn" id="6_l2uv4"]
 
 [node name="LevelTwo" type="Node2D"]
 script = ExtResource("1_75d2b")
@@ -20,6 +21,11 @@ position = Vector2(-179.99998, 184.99998)
 
 [node name="Railing" parent="." instance=ExtResource("4_l2uv4")]
 position = Vector2(-179, 185)
+collision_mask = 2
+metadata/tile_map = NodePath("../TileMap")
+
+[node name="Railing7" parent="." instance=ExtResource("4_l2uv4")]
+position = Vector2(307, 188)
 collision_mask = 2
 metadata/tile_map = NodePath("../TileMap")
 
@@ -57,6 +63,18 @@ metadata/tile_map = NodePath("../TileMap")
 position = Vector2(-180, 63)
 metadata/TileMap = NodePath("../TileMap")
 
+[node name="TargetMark" parent="PushBox" instance=ExtResource("6_l2uv4")]
+metadata/TargetPos = NodePath("../../TargetMark")
+
 [node name="PushBox2" parent="." instance=ExtResource("5_l278w")]
 position = Vector2(-184, -59)
 metadata/TileMap = NodePath("../TileMap")
+
+[node name="TargetMark" parent="." instance=ExtResource("6_l2uv4")]
+position = Vector2(-308, -58)
+scale = Vector2(0.1, 0.1)
+metadata/IsTarget = true
+metadata/TileMap = NodePath("../TileMap")
+
+[connection signal="started_moving" from="PushBox" to="PushBox/TargetMark" method="_on_start_moving"]
+[connection signal="stopped_moving" from="PushBox" to="PushBox/TargetMark" method="_on_stop_moving"]

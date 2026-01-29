@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://b543xl4vvlj2v"]
+
+[ext_resource type="Script" uid="uid://vvjmp0m3ptt6" path="res://scripts/level.gd" id="1_qjqek"]
+[ext_resource type="PackedScene" uid="uid://b0405qk5dltec" path="res://scenes/Levels and tilemaps/four.tscn" id="2_qjqek"]
+[ext_resource type="PackedScene" uid="uid://dp2548xx1mi1f" path="res://scenes/entities/push_box.tscn" id="3_1ym3l"]
+[ext_resource type="PackedScene" uid="uid://j0myjp2dskbc" path="res://scenes/entities/slide_box.tscn" id="4_eg46j"]
+[ext_resource type="PackedScene" uid="uid://bkb4ifmxnfc0s" path="res://scenes/target_marker.tscn" id="5_xby0p"]
+[ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://scenes/entities/character.tscn" id="6_70xpi"]
+
+[node name="LevelTwo" type="Node2D"]
+script = ExtResource("1_qjqek")
+metadata/next_level = 0
+
+[node name="TileMap" parent="." instance=ExtResource("2_qjqek")]
+
+[node name="PushBox" parent="." instance=ExtResource("3_1ym3l")]
+position = Vector2(-184, -74)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="SlideBox2" parent="." instance=ExtResource("4_eg46j")]
+position = Vector2(-181, 59)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="Character" parent="." instance=ExtResource("6_70xpi")]
+position = Vector2(-307.00003, 54.999985)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[node name="TargetMark" parent="." instance=ExtResource("5_xby0p")]
+position = Vector2(304, 58)
+scale = Vector2(0.1, 0.1)
+metadata/IsTarget = true
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="PushBox3" parent="." instance=ExtResource("3_1ym3l")]
+position = Vector2(-184, -191)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="PushBox2" parent="." instance=ExtResource("3_1ym3l")]
+position = Vector2(59, -186)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="TargetMark" parent="PushBox2" instance=ExtResource("5_xby0p")]
+metadata/TargetPos = NodePath("../../TargetMark")
+
+[connection signal="started_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_start_moving"]
+[connection signal="stopped_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_stop_moving"]
+[connection signal="reached_target" from="PushBox2/TargetMark" to="." method="_level_finished"]

@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://dtkcsfep85rs6" path="res://scripts/push_box.gd" id="1_nh8ip"]
 [ext_resource type="Texture2D" uid="uid://c3wigsa06l1q6" path="res://sprites/Plain box.PNG" id="2_b3o5c"]
 [ext_resource type="Texture2D" uid="uid://dfp4afsmbm24f" path="res://Box.png" id="3_6hwbu"]
-[ext_resource type="Texture2D" uid="uid://drhortmeesq3w" path="res://sprites/Railing.PNG" id="3_b3o5c"]
+[ext_resource type="Texture2D" uid="uid://csxj180f8qvff" path="res://sprites/box wheelbase.PNG" id="3_b3o5c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eosmo"]
-size = Vector2(198, 195)
+size = Vector2(193, 195)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lajmy"]
 size = Vector2(195, 10)
@@ -31,9 +31,9 @@ scale = Vector2(0.16666664, 0.16666667)
 texture = ExtResource("2_b3o5c")
 
 [node name="Railing" type="Sprite2D" parent="PlainBox"]
-self_modulate = Color(0.24705882, 0.24705882, 0.24705882, 0.4862745)
+scale = Vector2(1.1, 1.5)
 texture = ExtResource("3_b3o5c")
-flip_v = true
+offset = Vector2(0, -180)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4.167)
