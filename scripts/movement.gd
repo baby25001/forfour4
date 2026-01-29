@@ -60,19 +60,26 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("ui_left", "ui_right")
+	if direction == 1:
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
 	ray.target_position.x = direction * RAY_LENGTH
 	if direction:
+		$Sprite2D.play("run")
 		velocity.x = direction * SPEED
 	else:
+		$Sprite2D.play("default")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	change_push_target(ray.get_collider())
 	if Input.is_action_just_pressed("ui_push"):
 		if ray.get_collider():
 			print(ray.get_collider())
-		player_pushed.emit(direction)
 		if push_target != null:
-			play_kick_anim()
+			if push_target.is_pushable(direction):
+				play_kick_anim()
+		player_pushed.emit(direction)
 	
 	move(velocity * delta)
 	
@@ -92,6 +99,8 @@ func _physics_process(delta: float) -> void:
 
 func play_kick_anim():
 	kicking = true
+	$Kick_sfx.play()
+	$Sprite2D.play("kick")
 	await get_tree().create_timer(0.2).timeout
 	kicking = false
 

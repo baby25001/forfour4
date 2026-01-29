@@ -22,10 +22,7 @@ func _on_timer_timeout() -> void:
 		return
 	
 	if current_variation == next_variation or is_even(loop):
-		if loop < 6:
-			play_loop(current_variation)
-		else:
-			play_loop(0)
+		play_loop(0)
 	if next_variation > current_variation and not in_transition and not is_even(loop):
 		current_variation += 1
 		print("TRANSITION!!")
