@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6dcyx6sa6cuc"
+path="res://.godot/imported/drums.mp3-45b1f962b54c1cdb01a711c1ba533747.mp3str"
+
+[deps]
+
+source_file="res://audio/bgm stems/drums.mp3"
+dest_files=["res://.godot/imported/drums.mp3-45b1f962b54c1cdb01a711c1ba533747.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

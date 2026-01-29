@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dep8xoe3mjatj"]
+[gd_scene load_steps=7 format=3 uid="uid://dep8xoe3mjatj"]
 
 [ext_resource type="Script" uid="uid://c0rwacv6w6mx1" path="res://scenes/bgm_player.gd" id="1_wk4np"]
 [ext_resource type="AudioStream" uid="uid://dsl5kb7vaiv07" path="res://audio/bgm stems/pad 1.mp3" id="2_tlpki"]
 [ext_resource type="AudioStream" uid="uid://dn31vo7m66s1e" path="res://audio/bgm stems/pad 2 test 4.wav" id="3_annk1"]
+[ext_resource type="AudioStream" uid="uid://c60f32nv1ardd" path="res://audio/bgm stems/bassline fixed.mp3" id="4_annk1"]
+[ext_resource type="AudioStream" uid="uid://fh2is203i8wo" path="res://audio/bgm stems/perc.mp3" id="5_i0j14"]
+[ext_resource type="AudioStream" uid="uid://6dcyx6sa6cuc" path="res://audio/bgm stems/drums.mp3" id="6_gs5a3"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_wk4np")
@@ -16,9 +19,26 @@ stream = ExtResource("2_tlpki")
 stream = ExtResource("3_annk1")
 
 [node name="Bass" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_annk1")
 
 [node name="Perc" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_i0j14")
 
 [node name="Drums" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_gs5a3")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "LABEL1"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -59.0
+offset_top = 1.0
+offset_right = -4.0
+offset_bottom = 24.0
+text = "LEBEL2"
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
