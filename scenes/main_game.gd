@@ -23,7 +23,7 @@ var level_list = [
 	"level" : preload("res://scenes/Levels and tilemaps/level_dizzy.tscn")},
 ]
 
-
+signal bgm_changed
 
 
 
@@ -44,8 +44,11 @@ func _on_restart_pressed() -> void:
 	$AnimationPlayer.play("restart")
 
 func _on_level_change(to) -> void:
+	
 	current_level += 1
 	#current_level = to
+	if current_level == 3:
+		pass
 	if current_level >= level_list.size():
 		return
 	

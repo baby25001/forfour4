@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dn31vo7m66s1e"
+path="res://.godot/imported/pad 2 test 4.wav-86b1d10999c6a37068b89b3890810e31.sample"
+
+[deps]
+
+source_file="res://audio/bgm stems/pad 2 test 4.wav"
+dest_files=["res://.godot/imported/pad 2 test 4.wav-86b1d10999c6a37068b89b3890810e31.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
