@@ -26,7 +26,7 @@ func _enter_tree() -> void:
 		step = tile_map.map_to_local(Vector2(1,0)).x - tile_map.map_to_local(Vector2(0,0)).x
 		#if tile_map != null:
 		apply_floor_snap()
-		print(step)
+		#print(step)
 		target_x = position.x
 		has_started = true
 
