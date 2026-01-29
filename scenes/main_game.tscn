@@ -153,6 +153,7 @@ offset_left = -956.0
 offset_top = -84.0
 offset_right = -806.0
 offset_bottom = -34.0
+text = "BEST TIME:"
 
 [connection signal="bgm_changed" from="." to="BGM_player" method="_shift_variation_forward"]
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
