@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://xg0d8kjqnsr0"]
+[gd_scene load_steps=7 format=3 uid="uid://xg0d8kjqnsr0"]
 
 [ext_resource type="Script" uid="uid://b1nnjcnmhayrm" path="res://scripts/start_screen.gd" id="1_tx5wa"]
-[ext_resource type="Texture2D" uid="uid://6jm2ta3vdc0a" path="res://sprites/StartScreenBG.PNG" id="2_o7i0r"]
+[ext_resource type="Texture2D" uid="uid://darpndjmc1ck1" path="res://sprites/start screen no button.PNG" id="2_5pab1"]
+[ext_resource type="Texture2D" uid="uid://dyegvcr8gk33b" path="res://sprites/start.PNG" id="3_o30b1"]
+[ext_resource type="Texture2D" uid="uid://wck7cosyg25c" path="res://sprites/start push.PNG" id="4_ka6nf"]
+[ext_resource type="Texture2D" uid="uid://b6pjf5x2qguxs" path="res://sprites/quit.PNG" id="5_ws7p0"]
+[ext_resource type="Texture2D" uid="uid://bf2xd2blcio83" path="res://sprites/quit push.PNG" id="6_ecdxc"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -14,28 +18,29 @@ script = ExtResource("1_tx5wa")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = -1.0
-offset_right = 959.0
-offset_bottom = 720.0
-texture = ExtResource("2_o7i0r")
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_5pab1")
 
-[node name="Start" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0)
+[node name="Start" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 402.0
-offset_top = 523.0
-offset_right = 598.0
-offset_bottom = 579.0
-text = "Start"
+offset_left = 388.0
+offset_top = 514.0
+offset_right = 597.375
+offset_bottom = 581.0
+texture_normal = ExtResource("3_o30b1")
+texture_pressed = ExtResource("4_ka6nf")
+stretch_mode = 0
 
-[node name="Quit" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0)
+[node name="Quit" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 402.0
-offset_top = 604.0
-offset_right = 600.0
-offset_bottom = 662.0
-text = "Quit"
+offset_left = 391.0
+offset_top = 606.0
+offset_right = 595.60004
+offset_bottom = 672.0
+texture_normal = ExtResource("5_ws7p0")
+texture_pressed = ExtResource("6_ecdxc")
+stretch_mode = 0
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

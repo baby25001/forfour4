@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6jm2ta3vdc0a"
-path="res://.godot/imported/StartScreenBG.PNG-05a8a407d530b9151832331b7cca7975.ctex"
+uid="uid://darpndjmc1ck1"
+path="res://.godot/imported/start screen no button.PNG-d1614239fe13f1c1c5408dfaf4389aa8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/StartScreenBG.PNG"
-dest_files=["res://.godot/imported/StartScreenBG.PNG-05a8a407d530b9151832331b7cca7975.ctex"]
+source_file="res://sprites/start screen no button.PNG"
+dest_files=["res://.godot/imported/start screen no button.PNG-d1614239fe13f1c1c5408dfaf4389aa8.ctex"]
 
 [params]
 
