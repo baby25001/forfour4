@@ -70,7 +70,6 @@ func play_transition(variant, measure):
 		elif measure == 3:
 			play_loop(variant)
 		elif measure == 4:
-			current_variation += 1
 			in_transition = false
 			play_loop(variant)
 	if variant == 2:
@@ -82,6 +81,10 @@ func play_transition(variant, measure):
 		elif measure == 3:
 			play_loop(variant)
 		elif measure == 4:
-			current_variation += 1
 			in_transition = false
 			play_loop(variant)
+
+func _shift_variation_forward():
+	next_variation += 1
+	if next_variation > 2:
+		next_variation = 2
