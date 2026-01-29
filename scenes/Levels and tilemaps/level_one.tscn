@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvq4vyqc5f8ek"]
+[gd_scene load_steps=8 format=3 uid="uid://bvq4vyqc5f8ek"]
 
 [ext_resource type="Script" uid="uid://vvjmp0m3ptt6" path="res://scripts/level.gd" id="1_06pq0"]
 [ext_resource type="PackedScene" uid="uid://c1b5tmmufwn7y" path="res://scenes/Levels and tilemaps/one.tscn" id="2_bttrn"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://scenes/entities/character.tscn" id="4_ju4um"]
 [ext_resource type="PackedScene" uid="uid://dp2548xx1mi1f" path="res://scenes/entities/push_box.tscn" id="5_0rv3x"]
 [ext_resource type="PackedScene" uid="uid://bkb4ifmxnfc0s" path="res://scenes/target_marker.tscn" id="6_ucfn2"]
+[ext_resource type="PackedScene" uid="uid://cqrg7y22i3s7q" path="res://dialogue test/dialogue_generator.tscn" id="7_bttrn"]
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_06pq0")
@@ -42,6 +43,10 @@ metadata/TileMap = NodePath("../TileMap")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="Monologue" parent="." instance=ExtResource("7_bttrn")]
+position = Vector2(-589, 513)
+
+[connection signal="start_monologue" from="." to="Monologue" method="_on_start_monologue"]
 [connection signal="started_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_start_moving"]
 [connection signal="stopped_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_stop_moving"]
 [connection signal="reached_target" from="PushBox2/TargetMark" to="." method="_level_finished"]

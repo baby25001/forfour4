@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dch2p04jm6rd6"]
+[gd_scene load_steps=8 format=3 uid="uid://dch2p04jm6rd6"]
 
 [ext_resource type="Script" uid="uid://vvjmp0m3ptt6" path="res://scripts/level.gd" id="1_75d2b"]
 [ext_resource type="PackedScene" uid="uid://btes6m6aet8e5" path="res://scenes/Levels and tilemaps/dizzy.tscn" id="2_4lg8w"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://d0qt18pkwc3i1" path="res://scenes/entities/railing.tscn" id="4_l2uv4"]
 [ext_resource type="PackedScene" uid="uid://dp2548xx1mi1f" path="res://scenes/entities/push_box.tscn" id="5_l278w"]
 [ext_resource type="PackedScene" uid="uid://bkb4ifmxnfc0s" path="res://scenes/target_marker.tscn" id="6_l2uv4"]
+[ext_resource type="PackedScene" uid="uid://cqrg7y22i3s7q" path="res://dialogue test/dialogue_generator.tscn" id="7_l278w"]
 
-[node name="LevelTwo" type="Node2D"]
+[node name="LevelDizzy" type="Node2D"]
 script = ExtResource("1_75d2b")
 metadata/next_level = 0
 
@@ -76,6 +77,10 @@ scale = Vector2(0.1, 0.1)
 metadata/IsTarget = true
 metadata/TileMap = NodePath("../TileMap")
 
+[node name="Monologue" parent="." instance=ExtResource("7_l278w")]
+position = Vector2(-589, 513)
+
+[connection signal="start_monologue" from="." to="Monologue" method="_on_start_monologue"]
 [connection signal="started_moving" from="PushBox" to="PushBox/TargetMark" method="_on_start_moving"]
 [connection signal="stopped_moving" from="PushBox" to="PushBox/TargetMark" method="_on_stop_moving"]
 [connection signal="reached_target" from="PushBox/TargetMark" to="." method="_level_finished"]

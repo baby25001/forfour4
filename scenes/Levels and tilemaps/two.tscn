@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://kwjo2rubqbl"]
 
-[ext_resource type="Texture2D" uid="uid://bsfc8s3tjxcfc" path="res://Background.png" id="1_metxl"]
+[ext_resource type="Texture2D" uid="uid://bsfc8s3tjxcfc" path="res://sprites/Background.png" id="1_metxl"]
 [ext_resource type="Script" uid="uid://xuleb62wx2oh" path="res://scripts/test_gridsize.gd" id="2_5ncsu"]
 [ext_resource type="TileSet" uid="uid://dv7emsvlg6y6f" path="res://scenes/Levels and tilemaps/tilemap.tres" id="3_vpwwc"]
 
@@ -29,7 +29,7 @@ script = ExtResource("2_5ncsu")
 [node name="Platform" type="TileMapLayer" parent="."]
 z_index = 10
 z_as_relative = false
-tile_map_data = PackedByteArray("AAD8//7/AgAAAAAAAAD8////AgAAAAAAAAD8/wAAAgAAAAAAAAD8/wEAAgAAAAAAAAD8/wIAAgAAAAAAAAD9//7/AgAAAAAAAAD+//7/AgAAAAAAAAD///7/AgAAAAAAAAAAAP7/AgAAAAAAAAABAP7/AgAAAAAAAAACAP7/AgAAAAAAAAADAP7/AgAAAAAAAAADAP//AgAAAAAAAAADAAAAAgAAAAAAAAADAAEAAgAAAAAAAAADAAIAAgAAAAAAAAACAAIAAgAAAAAAAAABAAIAAgAAAAAAAAAAAAIAAgAAAAAAAAD//wIAAgAAAAAAAAD+/wIAAgAAAAAAAAD9/wIAAgAAAAAAAAAAAAAAAgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD8//7/AAABAAAAAAD8////AAABAAAAAAD8/wAAAAABAAAAAAD8/wEAAAABAAAAAAD8/wIAAAABAAAAAAD9//7/AAABAAAAAAD+//7/AAABAAAAAAD///7/AAABAAAAAAAAAP7/AAABAAAAAAABAP7/AAABAAAAAAACAP7/AAABAAAAAAADAP7/AAABAAAAAAADAP//AAABAAAAAAADAAAAAAABAAAAAAADAAEAAAABAAAAAAADAAIAAAABAAAAAAACAAIAAAABAAAAAAABAAIAAAABAAAAAAAAAAIAAAABAAAAAAD//wIAAAABAAAAAAD+/wIAAAABAAAAAAD9/wIAAAABAAAAAAAAAAAAAAABAAAAAAA=")
 tile_set = ExtResource("3_vpwwc")
 
 [node name="TargetZone" type="TileMapLayer" parent="."]

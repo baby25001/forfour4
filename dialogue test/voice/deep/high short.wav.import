@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://biy35il63ph48"
+path="res://.godot/imported/high short.wav-4d0fa779716573b5d2d5201bca8f2c6a.sample"
+
+[deps]
+
+source_file="res://dialogue test/voice/deep/high short.wav"
+dest_files=["res://.godot/imported/high short.wav-4d0fa779716573b5d2d5201bca8f2c6a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

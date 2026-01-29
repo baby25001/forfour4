@@ -1,0 +1,41 @@
+[gd_scene load_steps=12 format=3 uid="uid://cqrg7y22i3s7q"]
+
+[ext_resource type="Script" uid="uid://bmoenfye0sepk" path="res://dialogue test/dialogue.gd" id="1_tvr3b"]
+[ext_resource type="AudioStream" uid="uid://bxh0g8w4flxv8" path="res://dialogue test/voice/deep/high long.wav" id="2_gei8f"]
+[ext_resource type="AudioStream" uid="uid://biy35il63ph48" path="res://dialogue test/voice/deep/high short.wav" id="3_gjtm0"]
+[ext_resource type="AudioStream" uid="uid://4wh0yegs2xbn" path="res://dialogue test/voice/deep/low long.wav" id="4_2n33e"]
+[ext_resource type="AudioStream" uid="uid://jgxacyjao65x" path="res://dialogue test/voice/deep/low short.wav" id="5_3rkp2"]
+[ext_resource type="AudioStream" uid="uid://jj1jbpaypy8i" path="res://dialogue test/voice/undeep_male/high short.wav" id="6_46ifr"]
+[ext_resource type="AudioStream" uid="uid://cn5eqmc478l71" path="res://dialogue test/voice/undeep_male/high very short.wav" id="7_mnfka"]
+[ext_resource type="AudioStream" uid="uid://bu3vsoeifpoxd" path="res://dialogue test/voice/undeep_male/low long.wav" id="8_5k6qj"]
+[ext_resource type="AudioStream" uid="uid://ccpvxrkfqm8qc" path="res://dialogue test/voice/undeep_male/low short.wav" id="9_6vtbd"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wedjd"]
+streams_count = 4
+stream_0/stream = ExtResource("2_gei8f")
+stream_1/stream = ExtResource("3_gjtm0")
+stream_2/stream = ExtResource("4_2n33e")
+stream_3/stream = ExtResource("5_3rkp2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ylby1"]
+streams_count = 4
+stream_0/stream = ExtResource("6_46ifr")
+stream_1/stream = ExtResource("7_mnfka")
+stream_2/stream = ExtResource("8_5k6qj")
+stream_2/weight = 2.923
+stream_3/stream = ExtResource("9_6vtbd")
+
+[node name="Dialogue generator" type="Node2D"]
+scale = Vector2(2.85, 2.85)
+script = ExtResource("1_tvr3b")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+
+[node name="from telephone" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(500, 0)
+stream = SubResource("AudioStreamRandomizer_wedjd")
+
+[node name="undeep male" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(40, 0)
+stream = SubResource("AudioStreamRandomizer_ylby1")

@@ -1,0 +1,139 @@
+[gd_scene load_steps=14 format=3 uid="uid://b2dhsw624qes4"]
+
+[ext_resource type="Script" uid="uid://5vaap05gqip8" path="res://dialogue test/text_box.gd" id="1_oi3j2"]
+[ext_resource type="Texture2D" uid="uid://vqi84wyr068u" path="res://sprites/text bubble.png" id="2_m02s6"]
+[ext_resource type="FontFile" uid="uid://b3gn4x32bw7yy" path="res://font/Ot2-Regular.ttf" id="3_8eedf"]
+[ext_resource type="AudioStream" uid="uid://bxh0g8w4flxv8" path="res://dialogue test/voice/deep/high long.wav" id="3_m02s6"]
+[ext_resource type="AudioStream" uid="uid://biy35il63ph48" path="res://dialogue test/voice/deep/high short.wav" id="4_8eedf"]
+[ext_resource type="AudioStream" uid="uid://4wh0yegs2xbn" path="res://dialogue test/voice/deep/low long.wav" id="5_fiiur"]
+[ext_resource type="AudioStream" uid="uid://jgxacyjao65x" path="res://dialogue test/voice/deep/low short.wav" id="6_xqspk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oi3j2"]
+font = ExtResource("3_8eedf")
+font_size = 200
+
+[sub_resource type="Animation" id="Animation_758ep"]
+resource_name = "Move Up and Dissapear"
+
+[sub_resource type="Animation" id="Animation_oi3j2"]
+resource_name = "Move Up step 1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.37892905, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.3529412)]
+}
+
+[sub_resource type="Animation" id="Animation_hoxo3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2h7b"]
+_data = {
+&"Move Up and Dissapear": SubResource("Animation_758ep"),
+&"Move Up step 1": SubResource("Animation_oi3j2"),
+&"RESET": SubResource("Animation_hoxo3")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xj101"]
+streams_count = 4
+stream_0/stream = ExtResource("3_m02s6")
+stream_1/stream = ExtResource("4_8eedf")
+stream_2/stream = ExtResource("5_fiiur")
+stream_3/stream = ExtResource("6_xqspk")
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(0, -1)
+rotation = 0.013860101
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_oi3j2")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 310.0
+offset_bottom = 312.0
+grow_vertical = 0
+rotation = -0.013962634
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 3
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_oi3j2")
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+text_direction = 1
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+modulate = Color(18.892157, 18.892157, 18.892157, 1)
+show_behind_parent = true
+layout_mode = 2
+texture = ExtResource("2_m02s6")
+region_rect = Rect2(0, 0, 480, 376)
+patch_margin_left = 200
+patch_margin_right = 110
+axis_stretch_horizontal = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_q2h7b")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="deep" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_xj101")

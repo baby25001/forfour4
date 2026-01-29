@@ -1,0 +1,120 @@
+{ 
+	"DIALOGUE": {
+			"1": [
+			{
+				"speaker": 2,
+				"text" : "Congratulations! You have been successfully hired as an intern",
+				"scroll" : 0.05,
+				"pause" : 0.5
+			},
+			{
+				"speaker": 2,
+				"text" : "Your task today is really simple ",
+				"scroll" : 0.05,
+				"pause" : 0.5
+			},
+			{
+				"speaker": 2,
+				"text" : "sort a few boxes",
+				"scroll" : 0.05,
+				"pause" : 1
+			},
+			{
+				"speaker": 1,
+				"text" : "how am I supposed to sort them?",
+				"scroll" : 0.05,
+				"pause" : 2
+			},
+			{
+				"speaker": 2,
+				"text" : "just read the labels",
+				"scroll" : 0.05,
+				"pause" : 1
+			},
+			{
+				"speaker": 1,
+				"text" : "…there are no labels?",
+				"scroll" : 0.05,
+				"pause" : 2
+			},
+			{
+				"speaker": 2,
+				"text" : "you’ll figure it out",
+				"scroll" : 0.05,
+				"pause" : 1
+			},
+			{
+				"speaker": 1,
+				"text" : "…",
+				"scroll" : 0.05,
+				"pause" : 2
+			}
+			],
+	},
+	"MONOLOGUE": {
+			"1": [
+			{
+				"speaker": 1,
+				"text" : "Huh… shampoo for frogs…?",
+				"scroll" : 0.05,
+				"pause" : 1.5
+			}
+			],
+			"2": [
+			{
+				"speaker": 1,
+				"text" : "A cat? I wonder if it’s dead or alive",
+				"scroll" : 0.05,
+				"pause" : 2
+			}
+			],
+			"3": [
+			{
+				"speaker": 1,
+				"text" : "I never had a degree for pushing boxes…",
+				"scroll" : 0.05,
+				"pause" : 2
+			}
+			],
+			"4": [
+			{
+				"speaker": 1,
+				"text" : "This one is suspiciously warm",
+				"scroll" : 0.05,
+				"pause" : 1.5
+			}
+			],
+			"5": [
+			{
+				"speaker": 1,
+				"text" : "Why am I the only one working here",
+				"scroll" : 0.05,
+				"pause" : 2
+			},
+			],
+			"6": [
+			{
+				"speaker": 1,
+				"text" : "Can someone play some music here?",
+				"scroll" : 0.05,
+				"pause" : 1.5
+			}
+			],
+			"7": [
+			{
+				"speaker": 1,
+				"text" : "Is this even my department?",
+				"scroll" : 0.05,
+				"pause" : 0.5
+			}
+			],
+			"8": [
+			{
+				"speaker": 1,
+				"text" : "I should’ve asked more questions",
+				"scroll" : 0.05,
+				"pause" : 1.5
+			}
+		]
+	}
+}
