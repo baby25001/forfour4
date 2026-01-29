@@ -1,3 +1,24 @@
-[gd_scene format=3 uid="uid://cmhildqqq1g06"]
+[gd_scene load_steps=4 format=3 uid="uid://dep8xoe3mjatj"]
+
+[ext_resource type="Script" uid="uid://c0rwacv6w6mx1" path="res://scenes/bgm_player.gd" id="1_wk4np"]
+[ext_resource type="AudioStream" uid="uid://dsl5kb7vaiv07" path="res://audio/bgm stems/pad 1.mp3" id="2_tlpki"]
+[ext_resource type="AudioStream" uid="uid://dn31vo7m66s1e" path="res://audio/bgm stems/pad 2 test 4.wav" id="3_annk1"]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_wk4np")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Pad1" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_tlpki")
+
+[node name="Pad2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_annk1")
+
+[node name="Bass" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Perc" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Drums" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

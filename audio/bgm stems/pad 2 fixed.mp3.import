@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://2t34oq7q3dew"
+path="res://.godot/imported/pad 2 fixed.mp3-48c046d72c93c2e823ef9c2ba28884e6.mp3str"
+
+[deps]
+
+source_file="res://audio/bgm stems/pad 2 fixed.mp3"
+dest_files=["res://.godot/imported/pad 2 fixed.mp3-48c046d72c93c2e823ef9c2ba28884e6.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=110.0
+beat_count=32
+bar_beats=4
