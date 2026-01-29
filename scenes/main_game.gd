@@ -43,8 +43,10 @@ func _on_level_change(to) -> void:
 		stopwatch.stop()
 	
 	current_level += 1
-	if current_level == 3:
-		pass
+	#current_level = to
+	if current_level == 3 or current_level == 6:
+		print("BGM CHANGED")
+		bgm_changed.emit()
 	if current_level >= level_list.size():
 		return
 	
