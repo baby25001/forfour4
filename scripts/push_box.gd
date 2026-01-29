@@ -24,18 +24,19 @@ func _enter_tree() -> void:
 	if tile_map != null:
 		global_position = snap_to_grid()
 		step = tile_map.map_to_local(Vector2(1,0)).x - tile_map.map_to_local(Vector2(0,0)).x
-
-func start():
-	if tile_map != null:
+		#if tile_map != null:
 		apply_floor_snap()
-	print(step)
-	target_x = position.x
-	has_started = true
+		print(step)
+		target_x = position.x
+		has_started = true
+
+#func start():
+#	
 
 var prev_floor;
 func _physics_process(delta):
-	if not has_started:
-		start()
+	#if not has_started:
+	#	start()
 	
 	if $FloorDetector.get_collision_count() == 0:
 		velocity += get_gravity() * delta
@@ -75,14 +76,16 @@ func snap_to_grid(grid = tile_map):
 
 func _on_block_push(direction):
 	if moving: return
-	if get_top_box():
-		get_top_box()._on_block_push(direction)
 	
 	$WallDetector.target_position.x = direction * step
 	$WallDetector.force_raycast_update()
 	if $WallDetector.is_colliding():
 		print("NEATO")
 		return
+	if get_top_box():
+		get_top_box()._on_block_push(direction)
+	
+	
 	#print("block_pushed")
 	#if direction > 0:
 	#	print("push right")
@@ -115,15 +118,14 @@ func move(motion: Vector2):
 		debug_x(Vector2(0,0))
 		self_modulate.r = 0
 	else:
-		#print("collision happened?")
 		self_modulate.r = 1
 		stop_sliding()
 		push_length = 0
 		global_position.x = snap_to_grid().x
 		#move_and_collide(x_test.get_remainder())
 		debug_x(x_test.get_normal())
-		if x_test.get_normal().y != 0:
-			print(self, x_test.get_collider())
+		#if x_test.get_normal().y != 0:
+		#	print(self, x_test.get_collider())
 #	else:
 		#print("yeah stop em!")
 	
@@ -132,6 +134,7 @@ func move(motion: Vector2):
 	if y_test == null:
 		pass
 	else:
+		print(self, "collision y happened?")
 		if y_test.get_collider() is CharacterBody2D and direction_vector.y == -1:
 			if y_test.get_collider().has_method("_on_under_moved"):
 				var fail_code = y_test.get_collider()._on_under_moved(self, motion, true)
@@ -208,7 +211,7 @@ func check_low_wall():
 	
 	$FloorRay.force_raycast_update()
 	if  $FloorRay.is_colliding():
-		print("WAIT WHAT")
+		#print("WAIT WHAT")
 		return false
 	
 	for n in count:

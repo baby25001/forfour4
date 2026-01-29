@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=4 uid="uid://ce665app7rigq"]
+
+[ext_resource type="Texture2D" uid="uid://bsfc8s3tjxcfc" path="res://Background.png" id="1_87o3a"]
+[ext_resource type="Script" uid="uid://xuleb62wx2oh" path="res://scripts/test_gridsize.gd" id="2_uwmu0"]
+[ext_resource type="TileSet" uid="uid://dv7emsvlg6y6f" path="res://scenes/Levels and tilemaps/tilemap.tres" id="3_vcosq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ukv2n"]
+texture = ExtResource("1_87o3a")
+texture_region_size = Vector2i(122, 122)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-59.767677, -61, 59.767685, -61, 59.767685, 51.14142, -59.767677, 51.14142)
+2:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_oi3di"]
+tile_size = Vector2i(122, 122)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_ukv2n")
+
+[node name="TileMap" type="Node2D"]
+
+[node name="Background" type="TileMapLayer" parent="."]
+z_index = -3
+tile_map_data = PackedByteArray("AAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAACAAEAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAACAP//AAAAAAAAAAABAP//AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAD9//7/AAAAAAAAAAABAP7/AAAAAAAAAAACAP7/AAAAAAAAAAACAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_oi3di")
+collision_enabled = false
+script = ExtResource("2_uwmu0")
+
+[node name="Platform" type="TileMapLayer" parent="."]
+z_index = 10
+z_as_relative = false
+tile_map_data = PackedByteArray("AAD8//3/AgAAAAAAAAD8//7/AgAAAAAAAAD8////AgAAAAAAAAD8/wAAAgAAAAAAAAD8/wEAAgAAAAAAAAD8/wIAAgAAAAAAAAD9/wIAAgAAAAAAAAD+/wIAAgAAAAAAAAD//wIAAgAAAAAAAAAAAAIAAgAAAAAAAAABAAIAAgAAAAAAAAACAAIAAgAAAAAAAAADAAIAAgAAAAAAAAADAAEAAgAAAAAAAAADAAAAAgAAAAAAAAADAP//AgAAAAAAAAADAP7/AgAAAAAAAAADAP3/AgAAAAAAAAACAP3/AgAAAAAAAAABAP3/AgAAAAAAAAAAAP3/AgAAAAAAAAD///3/AgAAAAAAAAD+//3/AgAAAAAAAAD9//3/AgAAAAAAAAA=")
+tile_set = ExtResource("3_vcosq")
+
+[node name="TargetZone" type="TileMapLayer" parent="."]
+z_index = -2
+tile_map_data = PackedByteArray("AAD9////AAACAAAAAAA=")
+tile_set = SubResource("TileSet_oi3di")

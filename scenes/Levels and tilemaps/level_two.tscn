@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cg6pjnd0y6mdh"]
+
+[ext_resource type="Script" uid="uid://vvjmp0m3ptt6" path="res://scripts/level.gd" id="1_4jmmx"]
+[ext_resource type="PackedScene" uid="uid://kwjo2rubqbl" path="res://scenes/Levels and tilemaps/two.tscn" id="1_l1uaw"]
+[ext_resource type="PackedScene" uid="uid://dp2548xx1mi1f" path="res://scenes/entities/push_box.tscn" id="2_4jmmx"]
+[ext_resource type="PackedScene" uid="uid://bkb4ifmxnfc0s" path="res://scenes/target_marker.tscn" id="3_g14jl"]
+[ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://scenes/entities/character.tscn" id="4_shdta"]
+
+[node name="LevelTwo" type="Node2D"]
+script = ExtResource("1_4jmmx")
+metadata/next_level = 2
+
+[node name="TileMap" parent="." instance=ExtResource("1_l1uaw")]
+
+[node name="PushBox" parent="." instance=ExtResource("2_4jmmx")]
+position = Vector2(-60, 50.000004)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="PushBox2" parent="." instance=ExtResource("2_4jmmx")]
+position = Vector2(-57, 183)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="PushBox3" parent="." instance=ExtResource("2_4jmmx")]
+position = Vector2(62, -62)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="TargetMark" parent="PushBox3" instance=ExtResource("3_g14jl")]
+metadata/TargetPos = NodePath("../../TargetPos")
+
+[node name="TargetPos" parent="." instance=ExtResource("3_g14jl")]
+position = Vector2(310, 59)
+scale = Vector2(0.1, 0.1)
+metadata/IsTarget = true
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="Character" parent="." instance=ExtResource("4_shdta")]
+position = Vector2(-56.000046, -72.999985)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.5, 0.5)
+
+[connection signal="started_moving" from="PushBox3" to="PushBox3/TargetMark" method="_on_start_moving"]
+[connection signal="stopped_moving" from="PushBox3" to="PushBox3/TargetMark" method="_on_stop_moving"]
+[connection signal="reached_target" from="PushBox3/TargetMark" to="." method="_level_finished"]
+[connection signal="reached_target" from="TargetPos" to="." method="_level_finished"]

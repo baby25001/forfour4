@@ -13,6 +13,7 @@ var push_right = Vector2(300, 0)
 var push_target = null
 var on_ladder = false
 var climbing = false
+var kicking = false
 #Buffer system
 
 
@@ -23,9 +24,15 @@ signal upwards_collision(motion: Vector2)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	if kicking:
+		return
+	
+	print(position)
 	if $FloorDetector.get_collision_count() == 0:
 		velocity += get_gravity() * grav_mod * delta
-
+	
+	
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and $FloorDetector.get_collision_count() != 0 and not on_ladder:
 		velocity.y = JUMP_VELOCITY
@@ -61,7 +68,11 @@ func _physics_process(delta: float) -> void:
 	
 	change_push_target(ray.get_collider())
 	if Input.is_action_just_pressed("ui_push"):
+		if ray.get_collider():
+			print(ray.get_collider())
 		player_pushed.emit(direction)
+		if push_target != null:
+			play_kick_anim()
 	
 	move(velocity * delta)
 	
@@ -78,6 +89,11 @@ func _physics_process(delta: float) -> void:
 	#        and Input.is_action_just_pressed("ui_push") and Input.is_action_pressed("ui_right")
 	#    ) :
 	#        collision.get_collider().apply_central_impulse(push_right)
+
+func play_kick_anim():
+	kicking = true
+	await get_tree().create_timer(0.2).timeout
+	kicking = false
 
 func move(motion: Vector2):
 	var direction_vector = Vector2((motion.x/abs(motion.x)),(motion.y/abs(motion.y)))

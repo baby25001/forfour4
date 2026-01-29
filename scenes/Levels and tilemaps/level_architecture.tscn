@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://beyaq4xf7pgdp"]
+
+[ext_resource type="Script" uid="uid://vvjmp0m3ptt6" path="res://scripts/level.gd" id="1_22cks"]
+[ext_resource type="PackedScene" uid="uid://ce665app7rigq" path="res://scenes/Levels and tilemaps/Architechture.tscn" id="2_22cks"]
+[ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://scenes/entities/character.tscn" id="3_2f4u7"]
+[ext_resource type="PackedScene" uid="uid://dp2548xx1mi1f" path="res://scenes/entities/push_box.tscn" id="4_njn5d"]
+[ext_resource type="PackedScene" uid="uid://bkb4ifmxnfc0s" path="res://scenes/target_marker.tscn" id="5_qf4hc"]
+[ext_resource type="PackedScene" uid="uid://d0qt18pkwc3i1" path="res://scenes/entities/railing.tscn" id="6_1lwgi"]
+[ext_resource type="PackedScene" uid="uid://j0myjp2dskbc" path="res://scenes/entities/slide_box.tscn" id="7_f8kt3"]
+
+[node name="LevelArchitechtue" type="Node2D"]
+script = ExtResource("1_22cks")
+metadata/next_level = 1
+
+[node name="TileMap" parent="." instance=ExtResource("2_22cks")]
+
+[node name="Character" parent="." instance=ExtResource("3_2f4u7")]
+position = Vector2(-303, 184)
+
+[node name="PushBox" parent="." instance=ExtResource("4_njn5d")]
+position = Vector2(-178, 66)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="PushBox2" parent="." instance=ExtResource("4_njn5d")]
+position = Vector2(184.00002, -55)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="PushBox3" parent="." instance=ExtResource("4_njn5d")]
+position = Vector2(52, 189)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="TargetZone" parent="." instance=ExtResource("5_qf4hc")]
+position = Vector2(-318, -62.999996)
+scale = Vector2(0.10166671, 0.0991146)
+metadata/IsTarget = true
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Railing2" parent="." instance=ExtResource("6_1lwgi")]
+position = Vector2(-185, 186)
+metadata/tile_map = NodePath("../TileMap")
+
+[node name="Railing5" parent="." instance=ExtResource("6_1lwgi")]
+position = Vector2(63, 65)
+metadata/tile_map = NodePath("../TileMap")
+
+[node name="Railing8" parent="." instance=ExtResource("6_1lwgi")]
+position = Vector2(183, 62)
+metadata/tile_map = NodePath("../TileMap")
+
+[node name="Railing6" parent="." instance=ExtResource("6_1lwgi")]
+position = Vector2(62, -46)
+metadata/tile_map = NodePath("../TileMap")
+
+[node name="Railing7" parent="." instance=ExtResource("6_1lwgi")]
+position = Vector2(182, -46)
+metadata/tile_map = NodePath("../TileMap")
+
+[node name="SlideBox" parent="." instance=ExtResource("7_f8kt3")]
+position = Vector2(61, -179)
+metadata/TileMap = NodePath("../TileMap")
+
+[node name="TargetMark" parent="SlideBox" instance=ExtResource("5_qf4hc")]
+scale = Vector2(0.16700001, 0.16700001)
+metadata/TargetPos = NodePath("../../TargetZone")
+
+[connection signal="started_moving" from="PushBox2" to="SlideBox/TargetMark" method="_on_start_moving"]
+[connection signal="stopped_moving" from="PushBox2" to="SlideBox/TargetMark" method="_on_stop_moving"]
+[connection signal="started_moving" from="PushBox3" to="SlideBox/TargetMark" method="_on_start_moving"]
+[connection signal="stopped_moving" from="PushBox3" to="SlideBox/TargetMark" method="_on_stop_moving"]
+[connection signal="reached_target" from="SlideBox/TargetMark" to="." method="_level_finished"]

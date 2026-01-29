@@ -1,20 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvq4vyqc5f8ek"]
+[gd_scene load_steps=7 format=3 uid="uid://bvq4vyqc5f8ek"]
 
-[ext_resource type="Script" uid="uid://vvjmp0m3ptt6" path="res://scripts/level_one.gd" id="1_06pq0"]
+[ext_resource type="Script" uid="uid://vvjmp0m3ptt6" path="res://scripts/level.gd" id="1_06pq0"]
 [ext_resource type="PackedScene" uid="uid://c1b5tmmufwn7y" path="res://scenes/Levels and tilemaps/one.tscn" id="2_bttrn"]
 [ext_resource type="PackedScene" uid="uid://cvkvtb25je5tc" path="res://scenes/menu.tscn" id="3_70qi7"]
 [ext_resource type="PackedScene" uid="uid://oea2uyph2jxn" path="res://scenes/entities/character.tscn" id="4_ju4um"]
 [ext_resource type="PackedScene" uid="uid://dp2548xx1mi1f" path="res://scenes/entities/push_box.tscn" id="5_0rv3x"]
 [ext_resource type="PackedScene" uid="uid://bkb4ifmxnfc0s" path="res://scenes/target_marker.tscn" id="6_ucfn2"]
-[ext_resource type="PackedScene" uid="uid://d0qt18pkwc3i1" path="res://scenes/entities/railing.tscn" id="7_bttrn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bttrn"]
-size = Vector2(244.00024, 55.00006)
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_06pq0")
+metadata/next_level = 1
 
 [node name="TileMap" parent="." instance=ExtResource("2_bttrn")]
+process_mode = 4
 position = Vector2(122, -7)
 
 [node name="Menu" parent="." instance=ExtResource("3_70qi7")]
@@ -23,37 +21,26 @@ offset_right = 122.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Character" parent="." instance=ExtResource("4_ju4um")]
-position = Vector2(69.99994, -189.99998)
+position = Vector2(185.99998, -188.99998)
 
 [node name="PushBox" parent="." instance=ExtResource("5_0rv3x")]
-position = Vector2(-69, 44.00003)
+position = Vector2(-58, 55)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="PushBox2" parent="." instance=ExtResource("5_0rv3x")]
-position = Vector2(-76, -81)
+position = Vector2(-58, -67)
 metadata/TileMap = NodePath("../TileMap")
 
 [node name="TargetMark" parent="PushBox2" instance=ExtResource("6_ucfn2")]
 metadata/TargetPos = NodePath("../../TargetZone")
 
 [node name="TargetZone" parent="." instance=ExtResource("6_ucfn2")]
-position = Vector2(304, 57)
+position = Vector2(437, 61.000004)
 scale = Vector2(0.10166671, 0.0991146)
 metadata/IsTarget = true
 metadata/TileMap = NodePath("../TileMap")
 
-[node name="Railing" parent="." instance=ExtResource("7_bttrn")]
-position = Vector2(-295, -67)
-rotation = -1.5707964
-metadata/tile_map = NodePath("../TileMap")
-
-[node name="Area2D" type="Area2D" parent="." groups=["Ladder"]]
-position = Vector2(426, 321)
-rotation = -1.5707964
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(332.00003, -610)
-shape = SubResource("RectangleShape2D_bttrn")
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="started_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_start_moving"]
 [connection signal="stopped_moving" from="PushBox2" to="PushBox2/TargetMark" method="_on_stop_moving"]

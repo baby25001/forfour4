@@ -1,7 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://oea2uyph2jxn"]
+[gd_scene load_steps=8 format=3 uid="uid://oea2uyph2jxn"]
 
 [ext_resource type="Script" uid="uid://dyqlpfgyj5isq" path="res://scripts/movement.gd" id="1_c2tta"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_wa5vi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u25id"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wa5vi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"kick",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnr8"]
 size = Vector2(128, 128)
@@ -21,8 +37,8 @@ floor_snap_length = 21.5
 platform_on_leave = 2
 script = ExtResource("1_c2tta")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_wa5vi")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u25id")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wfnr8")

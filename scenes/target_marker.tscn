@@ -17,9 +17,10 @@ metadata/IsTarget = false
 metadata/TileMap = NodePath("")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(-4.9967966e-06, 5.988024)
 shape = SubResource("RectangleShape2D_3qnoh")
 
