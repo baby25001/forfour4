@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://xg0d8kjqnsr0"]
+[gd_scene load_steps=3 format=3 uid="uid://xg0d8kjqnsr0"]
 
 [ext_resource type="Script" uid="uid://b1nnjcnmhayrm" path="res://scripts/start_screen.gd" id="1_tx5wa"]
+[ext_resource type="Texture2D" uid="uid://6jm2ta3vdc0a" path="res://sprites/StartScreenBG.PNG" id="2_o7i0r"]
 
 [node name="StartScreen" type="Control"]
 layout_mode = 3
@@ -11,25 +12,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tx5wa")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 1098.0
-offset_bottom = 732.0
+offset_left = -1.0
+offset_right = 959.0
+offset_bottom = 720.0
+texture = ExtResource("2_o7i0r")
 
 [node name="Start" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 373.0
-offset_top = 278.0
-offset_right = 562.0
-offset_bottom = 340.0
+offset_left = 402.0
+offset_top = 523.0
+offset_right = 598.0
+offset_bottom = 579.0
 text = "Start"
 
 [node name="Quit" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 385.0
-offset_top = 457.0
-offset_right = 574.0
-offset_bottom = 519.0
+offset_left = 402.0
+offset_top = 604.0
+offset_right = 600.0
+offset_bottom = 662.0
 text = "Quit"
 
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
