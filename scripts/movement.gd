@@ -13,6 +13,7 @@ var push_right = Vector2(300, 0)
 var push_target = null
 var on_ladder = false
 var climbing = false
+var kicking = false
 #Buffer system
 
 
@@ -23,9 +24,13 @@ signal upwards_collision(motion: Vector2)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	print(position)
 	if $FloorDetector.get_collision_count() == 0:
 		velocity += get_gravity() * grav_mod * delta
-
+	
+	#if kicking:
+	#	return
+	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and $FloorDetector.get_collision_count() != 0 and not on_ladder:
 		velocity.y = JUMP_VELOCITY
