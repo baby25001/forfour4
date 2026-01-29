@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cck7h48uou84v"]
+[gd_scene load_steps=13 format=3 uid="uid://cck7h48uou84v"]
 
 [ext_resource type="Script" uid="uid://chrg86ye6rsjm" path="res://scripts/main_game.gd" id="1_72e8q"]
 [ext_resource type="Script" uid="uid://c8rdansl3dnh6" path="res://scripts/name.gd" id="3_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_d2op2"]
 [ext_resource type="PackedScene" uid="uid://dep8xoe3mjatj" path="res://scenes/bgm_player.tscn" id="4_0rdsr"]
+[ext_resource type="Script" uid="uid://jxiq2qd3idsb" path="res://scripts/stopwatch.gd" id="5_ipu61"]
 
 [sub_resource type="Animation" id="Animation_ipu61"]
 length = 0.001
@@ -77,6 +78,13 @@ _data = {
 [sub_resource type="LabelSettings" id="LabelSettings_72e8q"]
 font_size = 40
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ygxny"]
+bg_color = Color(0.6, 0.6, 0.6, 0.5803922)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_72e8q")
 
@@ -121,6 +129,30 @@ horizontal_alignment = 1
 script = ExtResource("3_0rdsr")
 
 [node name="BGM_player" parent="." instance=ExtResource("4_0rdsr")]
+
+[node name="Stopwatch" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_ipu61")
+
+[node name="Label" type="Label" parent="Stopwatch"]
+layout_mode = 0
+offset_left = -956.0
+offset_top = -341.0
+offset_right = -806.0
+offset_bottom = -307.0
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_ygxny")
+text = "00:00.00"
+horizontal_alignment = 1
+
+[node name="BestLabel" type="Label" parent="."]
+offset_left = -956.0
+offset_top = -84.0
+offset_right = -806.0
+offset_bottom = -34.0
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
