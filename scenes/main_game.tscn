@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cck7h48uou84v"]
+[gd_scene load_steps=11 format=3 uid="uid://cck7h48uou84v"]
 
 [ext_resource type="Script" uid="uid://chrg86ye6rsjm" path="res://scenes/main_game.gd" id="1_72e8q"]
 [ext_resource type="Script" uid="uid://c8rdansl3dnh6" path="res://scenes/name.gd" id="3_0rdsr"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="3_d2op2"]
+[ext_resource type="PackedScene" uid="uid://dep8xoe3mjatj" path="res://scenes/bgm_player.tscn" id="4_0rdsr"]
 
 [sub_resource type="Animation" id="Animation_ipu61"]
 length = 0.001
@@ -118,6 +119,8 @@ text = "asdfa"
 label_settings = SubResource("LabelSettings_72e8q")
 horizontal_alignment = 1
 script = ExtResource("3_0rdsr")
+
+[node name="BGM_player" parent="." instance=ExtResource("4_0rdsr")]
 
 [connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

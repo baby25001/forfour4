@@ -28,11 +28,15 @@ stream = ExtResource("5_i0j14")
 stream = ExtResource("6_gs5a3")
 
 [node name="Label" type="Label" parent="."]
+process_mode = 4
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "LABEL1"
 
 [node name="Label2" type="Label" parent="."]
+process_mode = 4
+visible = false
 offset_left = -59.0
 offset_top = 1.0
 offset_right = -4.0
@@ -40,5 +44,7 @@ offset_bottom = 24.0
 text = "LEBEL2"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 4
+visible = false
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

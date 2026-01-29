@@ -30,13 +30,13 @@ func _on_timer_timeout() -> void:
 		loop = 1
 		play_transition(current_variation, loop)
 
-func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("jump"):
-		next_variation += 1
-		if next_variation > 2:
-			next_variation = 2
-	$Label.text = str(next_variation)
-	$Label2.text = str(current_variation)
+#func _physics_process(_delta: float) -> void:
+#	if Input.is_action_just_pressed("jump"):
+#		next_variation += 1
+#		if next_variation > 2:
+#			next_variation = 2
+#	$Label.text = str(next_variation)
+#	$Label2.text = str(current_variation)
 
 func is_even(number):
 	if number % 2 == 0:
