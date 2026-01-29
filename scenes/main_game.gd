@@ -3,15 +3,15 @@ extends Node2D
 var current_level = 6
 var current_level_node: Node2D
 var level_list = [
-	{"name" : "default",
+	{"name" : "Introduction to Cardboards",
 	"level" : preload("res://scenes/Levels and tilemaps/level_one.tscn")},
 	#"level" : preload("res://scenes/Levels and tilemaps/level_two.tscn")},
 	#"level" : preload("res://scenes/Levels and tilemaps/level_gymnastics.tscn")},
-	{"name" : "default",
+	{"name" : "Sorting 101",
 	"level" : preload("res://scenes/Levels and tilemaps/level_two.tscn")},
-	{"name" : "default",
+	{"name" : "Boxes in Motion",
 	"level" : preload("res://scenes/Levels and tilemaps/level_three.tscn")},
-	{"name" : "switcharoo",
+	{"name" : "Multi-box tasking",
 	"level" : preload("res://scenes/Levels and tilemaps/level_four.tscn")},
 	{"name" : "Industrial Equipment",
 	"level" : preload("res://scenes/Levels and tilemaps/level_rail_tut.tscn")},
