@@ -78,3 +78,4 @@ metadata/TileMap = NodePath("../TileMap")
 
 [connection signal="started_moving" from="PushBox" to="PushBox/TargetMark" method="_on_start_moving"]
 [connection signal="stopped_moving" from="PushBox" to="PushBox/TargetMark" method="_on_stop_moving"]
+[connection signal="reached_target" from="PushBox/TargetMark" to="." method="_level_finished"]

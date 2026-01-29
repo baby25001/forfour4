@@ -6,13 +6,22 @@ var level_list = [
 	{"name" : "default",
 	"level" : preload("res://scenes/Levels and tilemaps/level_one.tscn")},
 	#"level" : preload("res://scenes/Levels and tilemaps/level_two.tscn")},
+	#"level" : preload("res://scenes/Levels and tilemaps/level_gymnastics.tscn")},
 	{"name" : "default",
 	"level" : preload("res://scenes/Levels and tilemaps/level_two.tscn")},
 	{"name" : "default",
 	"level" : preload("res://scenes/Levels and tilemaps/level_three.tscn")},
+	{"name" : "switcharoo",
+	"level" : preload("res://scenes/Levels and tilemaps/level_four.tscn")},
+	{"name" : "Industrial Equipment",
+	"level" : preload("res://scenes/Levels and tilemaps/level_rail_tut.tscn")},
+	{"name" : "box gymnastics",
+	"level" : preload("res://scenes/Levels and tilemaps/level_gymnastics.tscn")},
 	{"name" : "musical boxes",
 	"level" : preload("res://scenes/Levels and tilemaps/level_dizzy.tscn")},
 ]
+
+
 
 
 
@@ -33,7 +42,8 @@ func _on_restart_pressed() -> void:
 	$AnimationPlayer.play("restart")
 
 func _on_level_change(to) -> void:
-	current_level = to
+	current_level += 1
+	#current_level = to
 	if current_level >= level_list.size():
 		return
 	
