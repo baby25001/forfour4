@@ -1,6 +1,6 @@
 extends Node2D
 
-var current_level = 0
+var current_level = 6
 var current_level_node: Node2D
 var level_list = [
 	{"name" : "default",
@@ -17,6 +17,8 @@ var level_list = [
 	"level" : preload("res://scenes/Levels and tilemaps/level_rail_tut.tscn")},
 	{"name" : "box gymnastics",
 	"level" : preload("res://scenes/Levels and tilemaps/level_gymnastics.tscn")},
+	{"name" : "not fragile?",
+	"level" : preload("res://scenes/Levels and tilemaps/level_architecture.tscn")},
 	{"name" : "musical boxes",
 	"level" : preload("res://scenes/Levels and tilemaps/level_dizzy.tscn")},
 ]

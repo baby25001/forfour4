@@ -106,6 +106,7 @@ libraries = {
 [node name="Animate" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Animate"]
+visible = false
 texture = ExtResource("3_d2op2")
 
 [node name="Name" type="Label" parent="."]

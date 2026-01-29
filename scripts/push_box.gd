@@ -76,14 +76,16 @@ func snap_to_grid(grid = tile_map):
 
 func _on_block_push(direction):
 	if moving: return
-	if get_top_box():
-		get_top_box()._on_block_push(direction)
 	
 	$WallDetector.target_position.x = direction * step
 	$WallDetector.force_raycast_update()
 	if $WallDetector.is_colliding():
 		print("NEATO")
 		return
+	if get_top_box():
+		get_top_box()._on_block_push(direction)
+	
+	
 	#print("block_pushed")
 	#if direction > 0:
 	#	print("push right")
